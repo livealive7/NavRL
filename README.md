@@ -199,11 +199,13 @@ This section demonstrates an example of deploying NavRL with ROS2 and Isaac Sim 
 
 Before get started, please install the simulator based on [this link](https://github.com/Zhefan-Xu/isaac-go2-ros2).
 
-First, copy the ```ros2``` folder from this repository into your ros2 workspace.
+First, copy the packages in ```ros2/src``` from this repository into your ros2 workspace.
 ```
-cp -r ros2 /path/to/ros2_ws/src
+cp -r ros2/src/* /path/to/ros2_ws/src
+cd /path/to/ros2_ws
 colcon build --symlink-install
 ```
+Alternatively, use the ```ros2``` folder directly as the workspace: ```cd ros2 && colcon build --symlink-install```.
 Then, start the simulation and deploy NavRL navigation.
 ```
 # Launch Isaac Go2 simulator

@@ -1,0 +1,9 @@
+# NavRL navigation node. odom_topic / cmd_topic are overridden by
+# isaac_navrl.launch.py from drone_id and the odom_topic / cmd_vel_topic arguments.
+navigation_node:
+  ros__parameters:
+    vel_limit: 1.0
+    odom_topic: /drone0/odom
+    cmd_topic: /drone0/cmd_vel
+    checkpoint_file: navrl_checkpoint.pt
+    visualize_raycast: false

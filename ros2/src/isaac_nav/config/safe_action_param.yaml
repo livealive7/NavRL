@@ -1,0 +1,10 @@
+# NavRL safety layer. min_height/max_height bound the altitude the safe action
+# may command; they must bracket the Iris' cruise altitude (these are
+# overridden from the min_height / max_height launch arguments).
+safe_action_node:
+  ros__parameters:
+    time_horizon: 2.0
+    time_step: 0.05
+    min_height: 0.5
+    max_height: 5.0
+    safety_distance: 0.5

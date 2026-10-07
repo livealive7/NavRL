@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>isaac_nav</name>
+  <version>0.1.0</version>
+  <description>Glue between Isaac Sim (Pegasus ROS2 backend) and the NavRL ROS2 stack: odometry and depth bridges, MAVLink velocity bridges, NavRL parameters and launch files</description>
+  <maintainer email="livealive7@gmail.com">peterson</maintainer>
+  <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>message_filters</depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>foxglove_bridge</exec_depend>
+  <!-- NavRL packages launched by isaac_navrl.launch.py -->
+  <exec_depend>map_manager</exec_depend>
+  <exec_depend>onboard_detector</exec_depend>
+  <exec_depend>navigation_runner</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

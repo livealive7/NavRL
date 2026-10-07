@@ -1,0 +1,6 @@
+# Optional YOLO detector feeding the dynamic detector (enable with use_yolo:=true).
+yolo_detector_node:
+  ros__parameters:
+    color_image_topic: /drone0/camera/color/image_raw
+    time_step: 0.033
+    debug_vis: False

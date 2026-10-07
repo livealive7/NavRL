@@ -686,6 +686,11 @@ namespace onboardDetector{
     }
 
     void dynamicDetector::visCB(){
+        // The UV detector is created lazily by the first detectionCB(); the
+        // visualization timer can fire before that and would dereference a null pointer.
+        if (this->uvDetector_ == NULL){
+            return;
+        }
         this->publishUVImages();
         this->publish3dBox(this->uvBBoxes_, this->uvBBoxesPub_, 0, 1, 0);
         std::vector<Eigen::Vector3d> dynamicPoints;

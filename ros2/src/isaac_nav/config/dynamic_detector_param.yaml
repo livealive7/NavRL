@@ -1,0 +1,68 @@
+# NavRL dynamic obstacle detector (onboard_detector) for the Pegasus Iris in Isaac Sim.
+# Topic names, camera mount and intrinsics are overridden by isaac_navrl.launch.py.
+dynamic_detector_node:
+  ros__parameters:
+    localization_mode: 1 # 0: pose, 1: odom
+    depth_image_topic: /drone0/camera/depth_restamped
+    color_image_topic: /drone0/camera/color/image_raw
+    pose_topic: /drone0/state/pose # unused in odom mode
+    odom_topic: /drone0/odom
+
+    # camera parameters (320x240)
+    depth_intrinsics: [228.50367736816406, 228.50367736816406, 160.0, 120.0] # fx, fy, cx, cy
+    color_intrinsics: [228.50367736816406, 228.50367736816406, 160.0, 120.0]
+    depth_scale_factor: 1000.0
+    depth_min_value: 0.5
+    depth_max_value: 5.0
+    depth_filter_margin: 5
+    depth_skip_pixel: 2
+    image_cols: 320
+    image_rows: 240
+    body_to_camera_depth: [0.0,  0.0,  1.0,  0.30,
+                          -1.0,  0.0,  0.0,  0.0,
+                           0.0, -1.0,  0.0,  0.0,
+                           0.0,  0.0,  0.0,  1.0]
+    body_to_camera_color: [0.0,  0.0,  1.0,  0.30,
+                          -1.0,  0.0,  0.0,  0.0,
+                           0.0, -1.0,  0.0,  0.0,
+                           0.0,  0.0,  0.0,  1.0]
+
+    # detector general
+    time_step: 0.033
+    raycast_max_length: 5.0
+    filtering_BBox_IOU_threshold: 0.05
+
+    # DBSCAN
+    ground_height: 0.15
+    dbscan_min_points_cluster: 20
+    dbscan_search_range_epsilon: 0.1
+    voxel_occupied_thresh: 5
+
+    # tracking and data association
+    history_size: 100
+    prediction_size: 20
+    similarity_threshold: 0.02
+    retrack_similarity_threshold: 0.015
+    e_p: 0.25
+    e_q_pos: 0.01
+    e_q_vel: 0.05
+    e_q_acc: 0.05
+    e_r_pos: 0.04
+    e_r_vel: 0.3
+    e_r_acc: 0.6
+    kalman_filter_averaging_frames: 10
+
+    # classification
+    frame_skip: 5
+    dynamic_velocity_threshold: 0.15
+    dynamic_voting_threshold: 0.8
+    maximum_skip_ratio: 0.5
+    fix_size_history_threshold: 10
+    fix_size_dimension_threshold: 0.4
+    frames_force_dynamic: 10
+    frames_force_dynamic_check_range: 30
+    dynamic_consistency_threshold: 5
+
+    # constrain size
+    constrain_size: true
+    target_object_size: [0.5, 0.5, 1.5]

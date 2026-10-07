@@ -11,9 +11,6 @@ from onboard_detector.srv import GetDynamicObstacles
 from navigation_runner.srv import GetSafeAction
 import torch
 import numpy as np
-from torchrl.data import CompositeSpec, UnboundedContinuousTensorSpec
-from tensordict.tensordict import TensorDict
-from torchrl.envs.utils import ExplorationType, set_exploration_type
 from ppo import PPO
 from utils import vec_to_new_frame, vec_to_world
 from pid_controller import AnglePIDController
@@ -38,7 +35,7 @@ class Navigation(Node):
         self.has_action = False
         self.laser_points_msg = None
 
-        self.height_control = False 
+        self.height_control = False  # set from 'use_goal_height' in __init__
         self.use_policy_server = False
         self.odom_received = False
         self.safety_stop = False
@@ -49,6 +46,17 @@ class Navigation(Node):
         self.get_logger().info(f"[navRunner]: Velocity limit: {self.vel_limit}.")
 
         # Visualize raycast
+        # Upstream NavRL flies at the current height: the goal z is overwritten
+        # and the vertical command is zeroed. Enable this to honour the z of
+        # /goal_pose (clamped to the range below) and send vertical velocity.
+        self.declare_parameter('use_goal_height', False)
+        self.declare_parameter('goal_min_height', 0.5)
+        self.declare_parameter('goal_max_height', 5.0)
+        self.use_goal_height = self.get_parameter('use_goal_height').get_parameter_value().bool_value
+        self.goal_min_height = self.get_parameter('goal_min_height').get_parameter_value().double_value
+        self.goal_max_height = self.get_parameter('goal_max_height').get_parameter_value().double_value
+        self.height_control = self.use_goal_height
+
         self.declare_parameter('visualize_raycast', False)
         self.vis_raycast = self.get_parameter('visualize_raycast').get_parameter_value().bool_value
         self.get_logger().info(f"[navRunner]: Visualize raycast is set to: {self.vis_raycast}.")
@@ -77,7 +85,11 @@ class Navigation(Node):
         self.get_safe_action_client = self.create_client(GetSafeAction, '/safe_action/get_safe_action', callback_group=safe_action_client_group)
         while not self.raycast_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('[navRunner]: Service /occupancy_map/raycast not available, waiting...')
-        
+        # A synchronous call() made before the server is discovered is lost and never returns,
+        # which freezes that timer for good, so wait for this service as well.
+        while not self.get_dyn_obs_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('[navRunner]: Service /onboard_detector/get_dynamic_obstacles not available, waiting...')
+
 
         # Controller
         self.angle_controller = AnglePIDController(kp=1.0, ki=0.0, kd=0.1, dt=0.05, max_angular_velocity=1.0)
@@ -93,25 +105,15 @@ class Navigation(Node):
     def init_model(self, ckpt_file):
         observation_dim = 8
         num_dim_each_dyn_obs_state = 10
-        observation_spec = CompositeSpec({
-            "agents": CompositeSpec({
-                "observation": CompositeSpec({
-                    "state": UnboundedContinuousTensorSpec((observation_dim,), device=self.cfg.device), 
-                    "lidar": UnboundedContinuousTensorSpec((1, self.lidar_hbeams, self.cfg.sensor.lidar_vbeams), device=self.cfg.device),
-                    "direction": UnboundedContinuousTensorSpec((1, 3), device=self.cfg.device),
-                    "dynamic_obstacle": UnboundedContinuousTensorSpec((1, self.cfg.algo.feature_extractor.dyn_obs_num, num_dim_each_dyn_obs_state), device=self.cfg.device),
-                }),
-            }).expand(1)
-        }, shape=[1], device=self.cfg.device)
-
         action_dim = 3
-        action_spec = CompositeSpec({
-            "agents": CompositeSpec({
-                "action": UnboundedContinuousTensorSpec((action_dim,), device=self.cfg.device), 
-            })
-        }).expand(1, action_dim).to(self.cfg.device)
 
-        policy = PPO(self.cfg.algo, observation_spec, action_spec, self.cfg.device)
+        policy = PPO(
+            self.cfg.algo, self.cfg.device,
+            lidar_shape=(1, self.lidar_hbeams, self.cfg.sensor.lidar_vbeams),
+            state_dim=observation_dim,
+            dyn_obs_dim=num_dim_each_dyn_obs_state,
+            action_dim=action_dim,
+        )
         file_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ckpts")
         checkpoint = os.path.join(file_dir, ckpt_file)
         policy.load_state_dict(torch.load(checkpoint, weights_only=True, map_location=self.cfg.device))
@@ -134,7 +136,12 @@ class Navigation(Node):
             return
 
         self.goal = goal
-        self.goal.pose.position.z = self.odom.pose.pose.position.z
+        if self.use_goal_height:
+            self.goal.pose.position.z = min(max(self.goal.pose.position.z,
+                                                self.goal_min_height),
+                                            self.goal_max_height)
+        else:
+            self.goal.pose.position.z = self.odom.pose.pose.position.z
         dir_x = self.goal.pose.position.x - self.odom.pose.pose.position.x
         dir_y = self.goal.pose.position.y - self.odom.pose.pose.position.y
         dir_z = self.goal.pose.position.z - self.odom.pose.pose.position.z
@@ -339,25 +346,20 @@ class Navigation(Node):
         dyn_obs_states = torch.cat([closest_dyn_obs_rpos_gn, closest_dyn_obs_distance_2d, closest_dyn_obs_distance_z, closest_dyn_obs_vel_g, \
                                     closest_dyn_obs_width.unsqueeze(1), closest_dyn_obs_height.unsqueeze(1)], dim=-1).unsqueeze(0).unsqueeze(0)
         # states
-        obs = TensorDict({
-            "agents": TensorDict({
-                "observation": TensorDict({
-                    "state": drone_state,
-                    "lidar": lidar_scan,
-                    "direction": target_dir_2d,
-                    "dynamic_obstacle": dyn_obs_states
-                })
-            })
-        })
+        obs = {
+            "state": drone_state,
+            "lidar": lidar_scan,
+            "direction": target_dir_2d,
+            "dynamic_obstacle": dyn_obs_states,
+        }
 
         has_obstacle_in_range = self.check_obstacle(lidar_scan, dyn_obs_states)
         if (has_obstacle_in_range):
-            with set_exploration_type(ExplorationType.MEAN):
-                output = self.policy(obs)
-            # vel_world = output["agents", "action"]
-            vel_local_normalized = output["agents", "action_normalized"]
+            output = self.policy(obs, deterministic=True)
+            # vel_world = output["action"]
+            vel_local_normalized = output["action_normalized"]
             vel_local_world = 2.0 * vel_local_normalized * self.vel_limit - self.vel_limit
-            vel_world = vec_to_world(vel_local_world, output["agents", "observation", "direction"])
+            vel_world = vec_to_world(vel_local_world, obs["direction"])
         else:
             vel_world = (goal - pos)/torch.norm(goal - pos) * self.vel_limit
         return vel_world

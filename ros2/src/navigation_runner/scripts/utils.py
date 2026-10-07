@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 from typing import Iterable, Union
-from tensordict.tensordict import TensorDict
 
 class ValueNorm(nn.Module):
     def __init__(
@@ -143,15 +142,6 @@ class GAE(nn.Module):
             advantages[:, step] = gae = delta + (self.gamma * self.lmbda * not_done[:, step] * gae) 
         returns = advantages + value
         return advantages, returns
-
-def make_batch(tensordict: TensorDict, num_minibatches: int):
-    tensordict = tensordict.reshape(-1) 
-    perm = torch.randperm(
-        (tensordict.shape[0] // num_minibatches) * num_minibatches,
-        device=tensordict.device,
-    ).reshape(num_minibatches, -1)
-    for indices in perm:
-        yield tensordict[indices]
 
 def vec_to_new_frame(vec, goal_direction):
     if (len(vec.size()) == 1):

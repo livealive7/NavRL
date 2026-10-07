@@ -1,0 +1,61 @@
+# NavRL occupancy map (map_manager) tuned for the Pegasus Iris in Isaac Sim.
+# Topic names, camera mount, intrinsics and map extents are overridden by
+# isaac_navrl.launch.py from its launch arguments; the values here are the
+# defaults for drone_id 0.
+map_manager_node:
+  ros__parameters:
+    localization_mode: 1 # 0: pose, 1: odom. Odom is used because Isaac's state/pose is BEST_EFFORT.
+    depth_image_topic: /drone0/camera/depth_restamped
+    point_cloud_topic: /drone0/lidar/point_cloud # unused: NavRL builds its LiDAR scan by ray casting the depth map
+    pose_topic: /drone0/state/pose # unused in odom mode
+    odom_topic: /drone0/odom
+
+    # robot size
+    robot_size: [0.0, 0.0, 0.0]
+
+    # Depth camera (Pegasus MonocularCamera, 320x240, 70 deg horizontal FOV)
+    depth_intrinsics: [228.50367736816406, 228.50367736816406, 160.0, 120.0] # fx, fy, cx, cy
+    depth_scale_factor: 1000.0 # Isaac publishes 32FC1 meters; map_manager converts to 16UC1 millimeters
+    depth_min_value: 0.5
+    depth_max_value: 5.0
+    depth_filter_margin: 2
+    depth_skip_pixel: 2
+    image_cols: 320
+    image_rows: 240
+    # Pose of the camera optical frame (x right, y down, z forward) in the body frame (FLU).
+    body_to_depth_sensor: [0.0,  0.0,  1.0,  0.30,
+                          -1.0,  0.0,  0.0,  0.0,
+                           0.0, -1.0,  0.0,  0.0,
+                           0.0,  0.0,  0.0,  1.0]
+
+    # Point cloud sensor (unused)
+    pointcloud_min_distance: 0.5
+    pointcloud_max_distance: 5.0
+    body_to_pointcloud_sensor: [1.0,  0.0,  0.0,  0.2,
+                                0.0,  1.0,  0.0,  0.0,
+                                0.0,  0.0,  1.0,  0.2,
+                                0.0,  0.0,  0.0,  1.0]
+
+    # Raycasting
+    raycast_max_length: 5.0
+    p_hit: 0.70
+    p_miss: 0.35
+    p_min: 0.12
+    p_max: 0.97
+    p_occ: 0.80
+
+    # Map. The map spans x,y in [-size/2, size/2] and z in [ground_height, ground_height + size_z].
+    map_resolution: 0.1
+    ground_height: 0.15 # m, keeps the floor (z = 0) out of the map
+    map_size: [60.0, 60.0, 6.0]
+    local_update_range: [5.0, 5.0, 5.0]
+    local_bound_inflation: 3.0
+    clean_local_map: false
+
+    # visualization
+    local_map_size: [8.0, 8.0, 3.0]
+    max_height_visualization: 6.0
+    visualize_global_map: false
+    verbose: false
+
+    prebuilt_map_directory: "No"
