@@ -244,6 +244,8 @@ def launch_setup(context, *args, **kwargs):
                      'cmd_topic': cmd_vel_topic,
                      'vel_limit': float(arg('vel_limit')),
                      'use_goal_height': arg('use_goal_height').lower() == 'true',
+                     'goal_stop_distance': float(arg('goal_stop_distance')),
+                     'lidar_column_min': arg('lidar_column_min').lower() == 'true',
                      'goal_min_height': float(arg('min_height')),
                      'goal_max_height': float(arg('max_height')),
                      'checkpoint_file': arg('checkpoint_file'),
@@ -280,6 +282,15 @@ def generate_launch_description():
                         'works from depth alone without it.'),
 
         # Topics (empty = derive from drone_id).
+        DeclareLaunchArgument(
+            'lidar_column_min', default_value='true',
+            description='A lidar direction is free only if all its vertical beams are '
+                        'free (stops the policy entering narrow rack bays). '
+                        'false = original NavRL behaviour.'),
+        DeclareLaunchArgument(
+            'goal_stop_distance', default_value='0.5',
+            description='Stop commanding velocity this close to the goal (m). '
+                        'Upstream NavRL uses 1.0, which looks like stopping short.'),
         DeclareLaunchArgument(
             'use_goal_height', default_value='false',
             description='Honour the z of /goal_pose (clamped to min/max_height). '

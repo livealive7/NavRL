@@ -1,0 +1,69 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1790914912.920183 1259026 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1790914912.920223 1259026 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.1.2+production.326809.f9bf0dda.gl
+[ISAACLAB] Kit kernel:  210.1.11+release.13746.80f6dc72.gl
+[ISAACLAB] Kit hash:    f9bf0dda
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5080" (15 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/peterson/.cache/warp/1.16.0
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.016
+	Rendering step-size   : 0.016
+	Environment step-size : 0.016
+[INFO] Generating terrains randomly took Last: 0.060761 s
+[INFO]: Physics scene prim path: /physicsScene
+[INFO]: Time taken for scene creation Last: 0.889431 s, Mean: 0.889431 s, Std: 0.000000 s, N: 1
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 256
+	Environment spacing   : 0.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Simulation parameters for joints in /World/envs/env_[^/]+/Robot:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                 Simulation Joint Information (Prim path: /World/envs/env_[^/]+/Robot)                                                  |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name          | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | rotor_0_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   1   | rotor_1_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   2   | rotor_2_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   3   | rotor_3_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+[INFO]: Thruster actuator: thrusters with model 'Thruster' (thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3'] [[1, 2, 3, 4]]).
+[INFO]: Initialized 1 thruster actuator(s) for multirotor.
+[INFO]: Multirotor initialized with 4 thrusters
+[INFO]: Thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3']
+[INFO]: Thruster force direction: (0.0, 0.0, 1.0)
+[INFO]: Time taken for simulation start Last: 0.886980 s, Mean: 0.886980 s, Std: 0.000000 s, N: 1
+[INFO]: Completed setting up the environment...
+[sweep] it   1000 | reached 97.5% | collision 2.5% | bounds 0.0% | timeout 97.5%
+[sweep] it   2000 | reached 99.6% | collision 0.4% | bounds 0.0% | timeout 99.6%
+[sweep] it   3000 | reached 97.1% | collision 2.9% | bounds 0.0% | timeout 97.1%
+[sweep] it   4000 | reached 97.9% | collision 2.1% | bounds 0.0% | timeout 97.9%
+[sweep] it   5000 | reached 94.1% | collision 5.9% | bounds 0.0% | timeout 94.1%
+[sweep] it   6000 | reached 98.4% | collision 1.6% | bounds 0.0% | timeout 98.4%
+[sweep] it   7000 | reached 93.6% | collision 6.4% | bounds 0.0% | timeout 93.6%
+[sweep] it   8000 | reached 95.9% | collision 4.1% | bounds 0.0% | timeout 95.9%
+[sweep] it   9000 | reached 90.2% | collision 9.4% | bounds 0.0% | timeout 90.6%
+[sweep] it  10000 | reached 96.9% | collision 3.1% | bounds 0.0% | timeout 96.9%
+[sweep] it  11000 | reached 97.5% | collision 2.5% | bounds 0.0% | timeout 97.5%
+[sweep] it  12000 | reached 91.4% | collision 8.6% | bounds 0.0% | timeout 91.4%
+[sweep] it  13000 | reached 89.8% | collision 10.0% | bounds 0.0% | timeout 90.0%
+[sweep] it  14000 | reached 74.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it  15000 | reached 81.6% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[INFO]: SimulationContext cleared
+Loading user config located at: '/home/peterson/Volume/IsaacLab/.venv/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+2026-10-02T04:21:53Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-10-02T04:21:53Z [44ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-10-02T04:21:54Z [926ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+2026-10-02T04:21:55Z [2,361ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?

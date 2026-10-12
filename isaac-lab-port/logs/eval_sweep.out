@@ -1,0 +1,78 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1790817785.076558  812480 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1790817785.076594  812480 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.1.2+production.326809.f9bf0dda.gl
+[ISAACLAB] Kit kernel:  210.1.11+release.13746.80f6dc72.gl
+[ISAACLAB] Kit hash:    f9bf0dda
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5080" (15 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/peterson/.cache/warp/1.16.0
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.016
+	Rendering step-size   : 0.016
+	Environment step-size : 0.016
+[INFO] Generating terrains randomly took Last: 0.061710 s
+[INFO]: Physics scene prim path: /physicsScene
+[INFO]: Time taken for scene creation Last: 1.066552 s, Mean: 1.066552 s, Std: 0.000000 s, N: 1
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 50
+	Environment spacing   : 0.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Simulation parameters for joints in /World/envs/env_[^/]+/Robot:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                 Simulation Joint Information (Prim path: /World/envs/env_[^/]+/Robot)                                                  |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name          | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | rotor_0_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   1   | rotor_1_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   2   | rotor_2_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   3   | rotor_3_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+[INFO]: Thruster actuator: thrusters with model 'Thruster' (thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3'] [[1, 2, 3, 4]]).
+[INFO]: Initialized 1 thruster actuator(s) for multirotor.
+[INFO]: Multirotor initialized with 4 thrusters
+[INFO]: Thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3']
+[INFO]: Thruster force direction: (0.0, 0.0, 1.0)
+[INFO]: Time taken for simulation start Last: 0.592573 s, Mean: 0.592573 s, Std: 0.000000 s, N: 1
+[INFO]: Completed setting up the environment...
+[sweep] it    100 | reached 3.0% | collision 40.0% | bounds 0.0% | timeout 60.0%
+[sweep] it    200 | reached 46.0% | collision 45.0% | bounds 0.0% | timeout 55.0%
+[sweep] it    300 | reached 49.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it    400 | reached 60.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it    500 | reached 56.0% | collision 42.0% | bounds 0.0% | timeout 58.0%
+[sweep] it    600 | reached 56.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it    700 | reached 58.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it    800 | reached 61.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it    900 | reached 68.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it   1000 | reached 53.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it   1100 | reached 73.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it   1200 | reached 68.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it   1300 | reached 61.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it   1400 | reached 66.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it   1500 | reached 65.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it   1600 | reached 64.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it   1700 | reached 64.0% | collision 32.0% | bounds 1.0% | timeout 67.0%
+[sweep] it   1800 | reached 59.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it   1900 | reached 52.0% | collision 44.0% | bounds 0.0% | timeout 56.0%
+[sweep] it   2000 | reached 67.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it   2100 | reached 62.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it   2200 | reached 69.0% | collision 30.0% | bounds 0.0% | timeout 70.0%
+[sweep] it   2300 | reached 79.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it   2400 | reached 72.0% | collision 28.0% | bounds 1.0% | timeout 71.0%
+[sweep] it   2500 | reached 75.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it   2600 | reached 62.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it   2700 | reached 58.0% | collision 42.0% | bounds 0.0% | timeout 58.0%
+[sweep] it   2800 | reached 66.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it   2900 | reached 70.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it   3000 | reached 67.0% | collision 31.0% | bounds 0.0% | timeout 69.0%

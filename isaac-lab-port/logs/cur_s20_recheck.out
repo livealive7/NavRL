@@ -1,0 +1,25 @@
+=== it 8000 line
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_8000.pt
+[eval] 3072 episodes | reached goal (at any time): 95.5% | collision: 4.4% | out of height bounds: 0.0% | timeout: 95.6%
+=== it 8000 random
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_8000.pt
+[eval] 3072 episodes | reached goal (at any time): 91.7% | collision: 5.7% | out of height bounds: 0.0% | timeout: 94.3%
+=== it 14500 line
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_14500.pt
+[eval] 3072 episodes | reached goal (at any time): 94.0% | collision: 6.0% | out of height bounds: 0.0% | timeout: 94.0%
+=== it 14500 random
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_14500.pt
+[eval] 3072 episodes | reached goal (at any time): 88.3% | collision: 6.6% | out of height bounds: 0.2% | timeout: 93.2%
+=== it 12000 line
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_12000.pt
+[eval] 3072 episodes | reached goal (at any time): 85.3% | collision: 8.8% | out of height bounds: 0.0% | timeout: 91.2%
+=== it 12000 random
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_12000.pt
+[eval] 3072 episodes | reached goal (at any time): 86.9% | collision: 8.1% | out of height bounds: 0.0% | timeout: 91.9%
+=== it 7500 line
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_7500.pt
+[eval] 3072 episodes | reached goal (at any time): 86.1% | collision: 13.8% | out of height bounds: 0.0% | timeout: 86.2%
+=== it 7500 random
+[eval] checkpoint: logs/navrl/cur_s20/checkpoint_7500.pt
+[eval] 3072 episodes | reached goal (at any time): 89.9% | collision: 6.9% | out of height bounds: 0.0% | timeout: 93.1%
+ALLDONE

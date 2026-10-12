@@ -1,0 +1,7 @@
+window 1 (it<500) score -0.012 best -0.012 bad 0
+window 2 (it<1000) score 0.637 best 0.637 bad 0
+window 3 (it<1500) score 0.763 best 0.763 bad 0
+window 4 (it<2000) score 0.616 best 0.763 bad 1
+window 5 (it<2500) score 0.586 best 0.763 bad 2
+window 6 (it<3000) score 0.645 best 0.763 bad 3
+degrading -> stopping training

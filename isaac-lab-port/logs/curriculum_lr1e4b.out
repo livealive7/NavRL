@@ -1,0 +1,9 @@
+10:33:14 === stage static=120 dynamic=0 | resume logs/navrl/lr1e4_s80/checkpoint_5000.pt
+10:44:12   it 2000: reach 84.9% collision 15.1%
+10:49:12   it 3000: reach 85.5% collision 13.6%
+10:54:11   it 4000: reach 82.2% collision 17.8%
+10:59:41   it 5000: reach 70.1% collision 29.9%
+11:04:42   it 6000: reach 66.9% collision 32.5%
+11:09:42   it 7000: reach 54.5% collision 45.4%
+11:14:42   it 8000: reach 72.1% collision 27.8%
+11:20:41   it 9000: reach 80.9% collision 19.1%

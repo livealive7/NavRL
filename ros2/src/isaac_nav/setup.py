@@ -29,6 +29,8 @@ setup(
             'depth_restamp_node = isaac_nav.depth_restamp_node:main',
             'cmd_vel_ardupilot_bridge = isaac_nav.cmd_vel_ardupilot_bridge:main',
             'cmd_vel_px4_bridge = isaac_nav.cmd_vel_px4_bridge:main',
+            'goal_manager_node = isaac_nav.goal_manager_node:main',
+            'grid_export_request = isaac_nav.grid_export_request:main',
         ],
     },
 )

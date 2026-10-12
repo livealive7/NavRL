@@ -1,0 +1,284 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1790818454.273438  819910 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1790818454.273474  819910 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.1.2+production.326809.f9bf0dda.gl
+[ISAACLAB] Kit kernel:  210.1.11+release.13746.80f6dc72.gl
+[ISAACLAB] Kit hash:    f9bf0dda
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5080" (15 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/peterson/.cache/warp/1.16.0
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.016
+	Rendering step-size   : 0.016
+	Environment step-size : 0.016
+[INFO] Generating terrains randomly took Last: 0.061042 s
+[INFO]: Physics scene prim path: /physicsScene
+[INFO]: Time taken for scene creation Last: 1.021777 s, Mean: 1.021777 s, Std: 0.000000 s, N: 1
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 50
+	Environment spacing   : 0.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Simulation parameters for joints in /World/envs/env_[^/]+/Robot:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                 Simulation Joint Information (Prim path: /World/envs/env_[^/]+/Robot)                                                  |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name          | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | rotor_0_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   1   | rotor_1_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   2   | rotor_2_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   3   | rotor_3_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+[INFO]: Thruster actuator: thrusters with model 'Thruster' (thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3'] [[1, 2, 3, 4]]).
+[INFO]: Initialized 1 thruster actuator(s) for multirotor.
+[INFO]: Multirotor initialized with 4 thrusters
+[INFO]: Thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3']
+[INFO]: Thruster force direction: (0.0, 0.0, 1.0)
+[INFO]: Time taken for simulation start Last: 0.583891 s, Mean: 0.583891 s, Std: 0.000000 s, N: 1
+[INFO]: Completed setting up the environment...
+[sweep] it   5100 | reached 76.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it   5200 | reached 69.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it   5300 | reached 77.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it   5400 | reached 81.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it   5500 | reached 82.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it   5600 | reached 81.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it   5700 | reached 79.0% | collision 20.0% | bounds 0.0% | timeout 80.0%
+[sweep] it   5800 | reached 84.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it   5900 | reached 79.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it   6000 | reached 89.0% | collision 11.0% | bounds 0.0% | timeout 89.0%
+[sweep] it   6100 | reached 77.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it   6200 | reached 83.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it   6300 | reached 77.0% | collision 21.0% | bounds 0.0% | timeout 79.0%
+[sweep] it   6400 | reached 79.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it   6500 | reached 87.0% | collision 10.0% | bounds 0.0% | timeout 90.0%
+[sweep] it   6600 | reached 73.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it   6700 | reached 85.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it   6800 | reached 71.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it   6900 | reached 67.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it   7000 | reached 69.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it   7100 | reached 83.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it   7200 | reached 76.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it   7300 | reached 79.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it   7400 | reached 84.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it   7500 | reached 74.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it   7600 | reached 67.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it   7700 | reached 76.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it   7800 | reached 70.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it   7900 | reached 69.0% | collision 30.0% | bounds 0.0% | timeout 70.0%
+[sweep] it   8000 | reached 67.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it   8100 | reached 69.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it   8200 | reached 74.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it   8300 | reached 73.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it   8400 | reached 74.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it   8500 | reached 68.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it   8600 | reached 77.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it   8700 | reached 82.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it   8800 | reached 84.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it   8900 | reached 70.0% | collision 30.0% | bounds 1.0% | timeout 69.0%
+[sweep] it   9000 | reached 75.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it   9100 | reached 81.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it   9200 | reached 83.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it   9300 | reached 85.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it   9400 | reached 87.0% | collision 11.0% | bounds 0.0% | timeout 89.0%
+[sweep] it   9500 | reached 86.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it   9600 | reached 71.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it   9700 | reached 70.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it   9800 | reached 76.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it   9900 | reached 66.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  10000 | reached 67.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  10100 | reached 69.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  10200 | reached 72.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  10300 | reached 71.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  10400 | reached 76.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it  10500 | reached 91.0% | collision 8.0% | bounds 0.0% | timeout 92.0%
+[sweep] it  10600 | reached 79.0% | collision 21.0% | bounds 0.0% | timeout 79.0%
+[sweep] it  10700 | reached 83.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  10800 | reached 86.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  10900 | reached 92.0% | collision 8.0% | bounds 0.0% | timeout 92.0%
+[sweep] it  11000 | reached 87.0% | collision 9.0% | bounds 0.0% | timeout 91.0%
+[sweep] it  11100 | reached 90.0% | collision 9.0% | bounds 0.0% | timeout 91.0%
+[sweep] it  11200 | reached 83.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  11300 | reached 77.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  11400 | reached 84.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it  11500 | reached 85.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  11600 | reached 81.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it  11700 | reached 90.0% | collision 9.0% | bounds 0.0% | timeout 91.0%
+[sweep] it  11800 | reached 85.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  11900 | reached 86.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  12000 | reached 85.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  12100 | reached 90.0% | collision 8.0% | bounds 0.0% | timeout 92.0%
+[sweep] it  12200 | reached 82.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  12300 | reached 85.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it  12400 | reached 78.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  12500 | reached 87.0% | collision 12.0% | bounds 0.0% | timeout 88.0%
+[sweep] it  12600 | reached 73.0% | collision 18.0% | bounds 1.0% | timeout 81.0%
+[sweep] it  12700 | reached 74.0% | collision 25.0% | bounds 0.0% | timeout 75.0%
+[sweep] it  12800 | reached 67.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  12900 | reached 51.0% | collision 46.0% | bounds 0.0% | timeout 54.0%
+[sweep] it  13000 | reached 65.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  13100 | reached 72.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it  13200 | reached 80.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  13300 | reached 79.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it  13400 | reached 79.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  13500 | reached 87.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it  13600 | reached 85.0% | collision 13.0% | bounds 0.0% | timeout 87.0%
+[sweep] it  13700 | reached 81.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  13800 | reached 84.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  13900 | reached 80.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it  14000 | reached 85.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  14100 | reached 75.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it  14200 | reached 84.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  14300 | reached 73.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it  14400 | reached 74.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it  14500 | reached 79.0% | collision 20.0% | bounds 0.0% | timeout 80.0%
+[sweep] it  14600 | reached 73.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it  14700 | reached 85.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  14800 | reached 80.0% | collision 20.0% | bounds 0.0% | timeout 80.0%
+[sweep] it  14900 | reached 78.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  15000 | reached 82.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  15100 | reached 74.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it  15200 | reached 73.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it  15300 | reached 83.0% | collision 17.0% | bounds 0.0% | timeout 83.0%
+[sweep] it  15400 | reached 77.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  15500 | reached 80.0% | collision 17.0% | bounds 1.0% | timeout 82.0%
+[sweep] it  15600 | reached 75.0% | collision 22.0% | bounds 1.0% | timeout 77.0%
+[sweep] it  15700 | reached 84.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  15800 | reached 77.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  15900 | reached 84.0% | collision 16.0% | bounds 0.0% | timeout 84.0%
+[sweep] it  16000 | reached 76.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it  16100 | reached 74.0% | collision 25.0% | bounds 0.0% | timeout 75.0%
+[sweep] it  16200 | reached 72.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it  16300 | reached 61.0% | collision 39.0% | bounds 0.0% | timeout 61.0%
+[sweep] it  16400 | reached 65.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  16500 | reached 62.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  16600 | reached 65.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  16700 | reached 62.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  16800 | reached 68.0% | collision 30.0% | bounds 0.0% | timeout 70.0%
+[sweep] it  16900 | reached 68.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  17000 | reached 70.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  17100 | reached 75.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  17200 | reached 79.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  17300 | reached 80.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  17400 | reached 79.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  17500 | reached 73.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it  17600 | reached 81.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  17700 | reached 85.0% | collision 14.0% | bounds 0.0% | timeout 86.0%
+[sweep] it  17800 | reached 86.0% | collision 8.0% | bounds 0.0% | timeout 92.0%
+[sweep] it  17900 | reached 82.0% | collision 9.0% | bounds 0.0% | timeout 91.0%
+[sweep] it  18000 | reached 83.0% | collision 9.0% | bounds 0.0% | timeout 91.0%
+[sweep] it  18100 | reached 82.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  18200 | reached 82.0% | collision 15.0% | bounds 0.0% | timeout 85.0%
+[sweep] it  18300 | reached 75.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it  18400 | reached 81.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it  18500 | reached 71.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it  18600 | reached 69.0% | collision 19.0% | bounds 0.0% | timeout 81.0%
+[sweep] it  18700 | reached 64.0% | collision 21.0% | bounds 0.0% | timeout 79.0%
+[sweep] it  18800 | reached 75.0% | collision 22.0% | bounds 0.0% | timeout 78.0%
+[sweep] it  18900 | reached 69.0% | collision 25.0% | bounds 0.0% | timeout 75.0%
+[sweep] it  19000 | reached 64.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  19100 | reached 67.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  19200 | reached 71.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it  19300 | reached 75.0% | collision 21.0% | bounds 0.0% | timeout 79.0%
+[sweep] it  19400 | reached 80.0% | collision 18.0% | bounds 0.0% | timeout 82.0%
+[sweep] it  19500 | reached 67.0% | collision 25.0% | bounds 0.0% | timeout 75.0%
+[sweep] it  19600 | reached 60.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  19700 | reached 68.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  19800 | reached 56.0% | collision 43.0% | bounds 0.0% | timeout 57.0%
+[sweep] it  19900 | reached 57.0% | collision 39.0% | bounds 0.0% | timeout 61.0%
+[sweep] it  20000 | reached 61.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  20100 | reached 65.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  20200 | reached 56.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  20300 | reached 63.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  20400 | reached 67.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it  20500 | reached 64.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  20600 | reached 68.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it  20700 | reached 53.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  20800 | reached 50.0% | collision 38.0% | bounds 0.0% | timeout 62.0%
+[sweep] it  20900 | reached 46.0% | collision 48.0% | bounds 0.0% | timeout 52.0%
+[sweep] it  21000 | reached 57.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  21100 | reached 65.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  21200 | reached 61.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  21300 | reached 58.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  21400 | reached 59.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  21500 | reached 60.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  21600 | reached 70.0% | collision 30.0% | bounds 0.0% | timeout 70.0%
+[sweep] it  21700 | reached 61.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  21800 | reached 69.0% | collision 29.0% | bounds 0.0% | timeout 71.0%
+[sweep] it  21900 | reached 56.0% | collision 44.0% | bounds 0.0% | timeout 56.0%
+[sweep] it  22000 | reached 59.0% | collision 40.0% | bounds 0.0% | timeout 60.0%
+[sweep] it  22100 | reached 64.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it  22200 | reached 57.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  22300 | reached 55.0% | collision 44.0% | bounds 0.0% | timeout 56.0%
+[sweep] it  22400 | reached 55.0% | collision 45.0% | bounds 0.0% | timeout 55.0%
+[sweep] it  22500 | reached 63.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  22600 | reached 56.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  22700 | reached 58.0% | collision 40.0% | bounds 0.0% | timeout 60.0%
+[sweep] it  22800 | reached 58.0% | collision 37.0% | bounds 0.0% | timeout 63.0%
+[sweep] it  22900 | reached 57.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it  23000 | reached 55.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  23100 | reached 62.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  23200 | reached 66.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  23300 | reached 65.0% | collision 17.0% | bounds 1.0% | timeout 82.0%
+[sweep] it  23400 | reached 55.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  23500 | reached 59.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  23600 | reached 59.0% | collision 35.0% | bounds 1.0% | timeout 64.0%
+[sweep] it  23700 | reached 43.0% | collision 30.0% | bounds 3.0% | timeout 67.0%
+[sweep] it  23800 | reached 50.0% | collision 32.0% | bounds 1.0% | timeout 67.0%
+[sweep] it  23900 | reached 53.0% | collision 32.0% | bounds 0.0% | timeout 68.0%
+[sweep] it  24000 | reached 56.0% | collision 26.0% | bounds 0.0% | timeout 74.0%
+[sweep] it  24100 | reached 53.0% | collision 40.0% | bounds 0.0% | timeout 60.0%
+[sweep] it  24200 | reached 56.0% | collision 42.0% | bounds 0.0% | timeout 58.0%
+[sweep] it  24300 | reached 62.0% | collision 38.0% | bounds 0.0% | timeout 62.0%
+[sweep] it  24400 | reached 55.0% | collision 42.0% | bounds 2.0% | timeout 56.0%
+[sweep] it  24500 | reached 54.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  24600 | reached 60.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  24700 | reached 57.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  24800 | reached 47.0% | collision 49.0% | bounds 0.0% | timeout 51.0%
+[sweep] it  24900 | reached 62.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  25000 | reached 57.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  25100 | reached 51.0% | collision 48.0% | bounds 0.0% | timeout 52.0%
+[sweep] it  25200 | reached 58.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  25300 | reached 58.0% | collision 40.0% | bounds 1.0% | timeout 59.0%
+[sweep] it  25400 | reached 52.0% | collision 48.0% | bounds 0.0% | timeout 52.0%
+[sweep] it  25500 | reached 52.0% | collision 46.0% | bounds 0.0% | timeout 54.0%
+[sweep] it  25600 | reached 50.0% | collision 43.0% | bounds 0.0% | timeout 57.0%
+[sweep] it  25700 | reached 48.0% | collision 39.0% | bounds 0.0% | timeout 61.0%
+[sweep] it  25800 | reached 48.0% | collision 38.0% | bounds 1.0% | timeout 61.0%
+[sweep] it  25900 | reached 55.0% | collision 38.0% | bounds 0.0% | timeout 62.0%
+[sweep] it  26000 | reached 48.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  26100 | reached 60.0% | collision 28.0% | bounds 0.0% | timeout 72.0%
+[sweep] it  26200 | reached 74.0% | collision 23.0% | bounds 0.0% | timeout 77.0%
+[sweep] it  26300 | reached 57.0% | collision 38.0% | bounds 0.0% | timeout 62.0%
+[sweep] it  26400 | reached 63.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  26500 | reached 59.0% | collision 39.0% | bounds 0.0% | timeout 61.0%
+[sweep] it  26600 | reached 62.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  26700 | reached 64.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  26800 | reached 62.0% | collision 35.0% | bounds 0.0% | timeout 65.0%
+[sweep] it  26900 | reached 60.0% | collision 27.0% | bounds 0.0% | timeout 73.0%
+[sweep] it  27000 | reached 55.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  27100 | reached 46.0% | collision 43.0% | bounds 0.0% | timeout 57.0%
+[sweep] it  27200 | reached 44.0% | collision 41.0% | bounds 0.0% | timeout 59.0%
+[sweep] it  27300 | reached 63.0% | collision 24.0% | bounds 0.0% | timeout 76.0%
+[sweep] it  27400 | reached 38.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[sweep] it  27500 | reached 51.0% | collision 33.0% | bounds 0.0% | timeout 67.0%
+[sweep] it  27600 | reached 51.0% | collision 36.0% | bounds 0.0% | timeout 64.0%
+[sweep] it  27700 | reached 66.0% | collision 30.0% | bounds 0.0% | timeout 70.0%
+[sweep] it  27800 | reached 54.0% | collision 39.0% | bounds 0.0% | timeout 61.0%
+[sweep] it  27900 | reached 62.0% | collision 31.0% | bounds 0.0% | timeout 69.0%
+[sweep] it  28000 | reached 61.0% | collision 34.0% | bounds 0.0% | timeout 66.0%
+[INFO]: SimulationContext cleared
+Loading user config located at: '/home/peterson/Volume/IsaacLab/.venv/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+2026-10-01T01:34:14Z [0ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-10-01T01:34:14Z [1ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-10-01T01:34:15Z [1,005ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+2026-10-01T01:34:16Z [2,484ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?

@@ -49,6 +49,15 @@ class Navigation(Node):
         # Upstream NavRL flies at the current height: the goal z is overwritten
         # and the vertical command is zeroed. Enable this to honour the z of
         # /goal_pose (clamped to the range below) and send vertical velocity.
+        # Final approach: within goal_slow_distance the speed is capped at 1 m/s,
+        # within goal_stop_distance the velocity command is zero (upstream: 3.0 / 1.0).
+        self.declare_parameter('goal_slow_distance', 3.0)
+        self.declare_parameter('goal_stop_distance', 1.0)
+        self.goal_slow_distance = self.get_parameter('goal_slow_distance').get_parameter_value().double_value
+        self.goal_stop_distance = self.get_parameter('goal_stop_distance').get_parameter_value().double_value
+        # Treat each lidar direction as blocked if any of its vertical beams hit something.
+        self.declare_parameter('lidar_column_min', True)
+        self.lidar_column_min = self.get_parameter('lidar_column_min').get_parameter_value().bool_value
         self.declare_parameter('use_goal_height', False)
         self.declare_parameter('goal_min_height', 0.5)
         self.declare_parameter('goal_max_height', 5.0)
@@ -316,6 +325,12 @@ class Navigation(Node):
         lidar_scan = torch.tensor(self.raypoints, device=self.cfg.device)
         lidar_scan = (lidar_scan - pos).norm(dim=-1).clamp_max(self.cfg.sensor.lidar_range).reshape(1, 1, self.lidar_hbeams, self.cfg.sensor.lidar_vbeams)
         lidar_scan = self.cfg.sensor.lidar_range - lidar_scan
+        if self.lidar_column_min:
+            # A direction counts as free only if ALL vertical beams passed: the closest
+            # obstacle of the 4 beams is used for the whole column (lidar_scan is
+            # range - distance, so the closest obstacle is the maximum). Narrow
+            # openings such as rack bays then look like solid walls to the policy.
+            lidar_scan = lidar_scan.max(dim=-1, keepdim=True).values.expand_as(lidar_scan).clone()
 
         # dynamic obstacle states
         dynamic_obstacle_pos = self.dynamic_obstacles[0].clone()
@@ -418,11 +433,11 @@ class Navigation(Node):
 
         # Goal condition: 
         distance = (pos - goal).norm() 
-        if (distance <= 3.0 and distance > 1.0):
+        if (distance <= self.goal_slow_distance and distance > self.goal_stop_distance):
             if (np.linalg.norm(safe_cmd_vel_local) != 0):
                 safe_cmd_vel_local = 1.0 * safe_cmd_vel_local/np.linalg.norm(safe_cmd_vel_local)
                 safe_cmd_vel_world = 1.0 * safe_cmd_vel_world/np.linalg.norm(safe_cmd_vel_world)
-        elif (distance <= 1.0):
+        elif (distance <= self.goal_stop_distance):
             safe_cmd_vel_local *= 0.
             safe_cmd_vel_world *= 0.
         

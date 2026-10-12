@@ -1,0 +1,90 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1791097620.306957 1981833 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1791097620.306995 1981833 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.1.2+production.326809.f9bf0dda.gl
+[ISAACLAB] Kit kernel:  210.1.11+release.13746.80f6dc72.gl
+[ISAACLAB] Kit hash:    f9bf0dda
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5080" (15 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/peterson/.cache/warp/1.16.0
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : None
+	Physics step-size     : 0.016
+	Rendering step-size   : 0.016
+	Environment step-size : 0.016
+[INFO] Generating terrains randomly took Last: 0.061273 s
+[INFO]: Physics scene prim path: /physicsScene
+[INFO]: Time taken for scene creation Last: 1.052560 s, Mean: 1.052560 s, Std: 0.000000 s, N: 1
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 256
+	Environment spacing   : 0.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Simulation parameters for joints in /World/envs/env_[^/]+/Robot:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                 Simulation Joint Information (Prim path: /World/envs/env_[^/]+/Robot)                                                  |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name          | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | rotor_0_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   1   | rotor_1_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   2   | rotor_2_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   3   | rotor_3_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+[INFO]: Thruster actuator: thrusters with model 'Thruster' (thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3'] [[1, 2, 3, 4]]).
+[INFO]: Initialized 1 thruster actuator(s) for multirotor.
+[INFO]: Multirotor initialized with 4 thrusters
+[INFO]: Thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3']
+[INFO]: Thruster force direction: (0.0, 0.0, 1.0)
+[INFO]: Time taken for simulation start Last: 0.687223 s, Mean: 0.687223 s, Std: 0.000000 s, N: 1
+[INFO]: Completed setting up the environment...
+[sweep] it   1000 | reached 29.5% | collision 64.5% | bounds 0.0% | timeout 35.5%
+[sweep] it   2000 | reached 20.7% | collision 77.5% | bounds 0.0% | timeout 22.5%
+[sweep] it   3000 | reached 39.5% | collision 60.5% | bounds 0.0% | timeout 39.5%
+[sweep] it   4000 | reached 37.3% | collision 62.1% | bounds 0.0% | timeout 37.9%
+[sweep] it   5000 | reached 23.0% | collision 77.0% | bounds 0.0% | timeout 23.0%
+[sweep] it   6000 | reached 63.7% | collision 32.2% | bounds 0.0% | timeout 67.8%
+[sweep] it   7000 | reached 79.3% | collision 20.5% | bounds 0.0% | timeout 79.5%
+[sweep] it   8000 | reached 65.4% | collision 15.2% | bounds 0.0% | timeout 84.8%
+[sweep] it   9000 | reached 56.2% | collision 22.5% | bounds 0.0% | timeout 77.5%
+[sweep] it  10000 | reached 39.1% | collision 10.5% | bounds 0.0% | timeout 89.5%
+[sweep] it  11000 | reached 27.1% | collision 59.4% | bounds 0.0% | timeout 40.6%
+[sweep] it  12000 | reached 58.6% | collision 29.7% | bounds 0.0% | timeout 70.3%
+[sweep] it  13000 | reached 31.2% | collision 50.4% | bounds 0.0% | timeout 49.6%
+[sweep] it  14000 | reached 12.3% | collision 57.0% | bounds 0.0% | timeout 43.0%
+[sweep] it  15000 | reached 30.5% | collision 45.7% | bounds 0.0% | timeout 54.3%
+[sweep] it  16000 | reached 12.5% | collision 70.1% | bounds 0.0% | timeout 29.9%
+[sweep] it  17000 | reached 20.9% | collision 74.6% | bounds 0.0% | timeout 25.4%
+[sweep] it  18000 | reached 1.2% | collision 44.3% | bounds 0.0% | timeout 55.7%
+[sweep] it  19000 | reached 32.4% | collision 40.0% | bounds 0.0% | timeout 60.0%
+[sweep] it  20000 | reached 39.8% | collision 31.4% | bounds 0.0% | timeout 68.6%
+[sweep] it  21000 | reached 22.9% | collision 51.6% | bounds 0.0% | timeout 48.4%
+[sweep] it  22000 | reached 13.1% | collision 20.9% | bounds 0.0% | timeout 79.1%
+[sweep] it  23000 | reached 0.8% | collision 47.1% | bounds 0.0% | timeout 52.9%
+[sweep] it  24000 | reached 33.2% | collision 42.0% | bounds 0.0% | timeout 58.0%
+[sweep] it  25000 | reached 6.1% | collision 19.7% | bounds 0.0% | timeout 80.3%
+[sweep] it  26000 | reached 2.5% | collision 45.5% | bounds 0.0% | timeout 54.5%
+[sweep] it  27000 | reached 4.5% | collision 53.7% | bounds 0.0% | timeout 46.3%
+[sweep] it  28000 | reached 22.1% | collision 38.9% | bounds 0.0% | timeout 61.1%
+[sweep] it  29000 | reached 12.5% | collision 23.2% | bounds 0.0% | timeout 76.8%
+[sweep] it  30000 | reached 32.8% | collision 15.2% | bounds 0.0% | timeout 84.8%
+[sweep] it  31000 | reached 12.7% | collision 7.2% | bounds 0.0% | timeout 92.8%
+[sweep] it  32000 | reached 2.5% | collision 28.7% | bounds 0.0% | timeout 71.3%
+[sweep] it  33000 | reached 4.3% | collision 36.3% | bounds 0.0% | timeout 63.7%
+[sweep] it  34000 | reached 26.6% | collision 64.5% | bounds 0.0% | timeout 35.5%
+[sweep] it  35000 | reached 20.1% | collision 71.9% | bounds 0.0% | timeout 28.1%
+[sweep] it  36000 | reached 11.9% | collision 63.5% | bounds 0.0% | timeout 36.5%
+[INFO]: SimulationContext cleared
+Loading user config located at: '/home/peterson/Volume/IsaacLab/.venv/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+2026-10-04T07:07:00Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-10-04T07:07:00Z [44ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-10-04T07:07:01Z [934ms] [Warning] [isaaclab.envs.direct_rl_env] Seed not set for the environment. The environment creation may not be deterministic.
+2026-10-04T07:07:02Z [2,513ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?

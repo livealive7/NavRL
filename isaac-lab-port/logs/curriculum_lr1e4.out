@@ -1,0 +1,32 @@
+08:10:48 === stage static=20 dynamic=0 | resume None
+08:21:46   it 2000: reach 64.8% collision 3.7%
+08:26:44   it 3000: reach 76.7% collision 9.2%
+08:31:42   it 4000: reach 90.3% collision 9.7%
+08:32:50   confirm it 4000 (3 rounds): (0.9129999999999999, 0.087)
+08:32:50 stage 20 PASSED with /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s20/checkpoint_4000.pt
+08:32:50 === stage static=40 dynamic=0 | resume /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s20/checkpoint_4000.pt
+08:43:51   it 2000: reach 50.3% collision 49.5%
+08:48:52   it 3000: reach 46.6% collision 51.5%
+08:53:29   eval produced no result line
+08:58:58   it 5000: reach 95.0% collision 4.9%
+09:00:08   confirm it 5000 (3 rounds): (0.951, 0.048)
+09:00:08 stage 40 PASSED with /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s40/checkpoint_5000.pt
+09:00:08 === stage static=80 dynamic=0 | resume /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s40/checkpoint_5000.pt
+09:11:09   it 2000: reach 66.8% collision 28.7%
+09:16:09   it 3000: reach 45.5% collision 48.9%
+09:21:08   it 4000: reach 84.4% collision 15.2%
+09:26:37   it 5000: reach 92.6% collision 7.0%
+09:27:48   confirm it 5000 (3 rounds): (0.9279999999999999, 0.067)
+09:27:49 stage 80 PASSED with /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s80/checkpoint_5000.pt
+09:27:49 === stage static=160 dynamic=0 | resume /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s80/checkpoint_5000.pt
+09:38:51   it 2000: reach 6.4% collision 93.6%
+09:43:54   it 3000: reach 16.6% collision 83.3%
+09:49:24   it 4000: reach 60.5% collision 37.4%
+09:54:24   it 5000: reach 51.0% collision 48.9%
+09:59:25   it 6000: reach 51.1% collision 48.9%
+10:04:25   it 7000: reach 51.0% collision 49.0%
+10:09:56   it 8000: reach 38.7% collision 61.3%
+10:14:56   it 9000: reach 36.8% collision 63.2%
+10:19:56   it 10000: reach 43.7% collision 56.3%
+10:24:56   it 11000: reach 55.8% collision 44.2%
+10:29:26 stage 160 ended without passing; best checkpoint /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/lr1e4_s160/checkpoint_4000.pt (score 0.231). Curriculum stops here.

@@ -140,3 +140,54 @@ goal topic names are relative in the NavRL sources, so a namespace would rename 
 * Do not run MAVROS and `cmd_vel_px4_bridge` together: both bind UDP 14540.
 * After stopping the launch, check for a leftover `navigation_node.py` (it ignores SIGTERM while blocked in a
   service call).
+
+## Random goals (goal_manager_node + Isaac Sim display)
+
+`goal_manager_node` (ROS2) samples N random 3D goals, publishes them one at a time
+on `/goal_pose` and moves to the next once the drone stays within `reach_radius`
+for `dwell_s` (or after `goal_timeout_s`, marked failed). Isaac Sim only draws
+them: `isaac_scripts/goal_display.py` is loaded automatically by the Pegasus
+`multi_backend_example` extension (container path `/Volume/NavRL/...`, override
+with env `NAVRL_GOAL_DISPLAY`; restart Isaac Sim after changing the extension).
+It listens on UDP 9870 and draws each goal as a coloured USD sphere without collision
+(grey pending, cyan next, yellow current = 1.6x larger, green reached, red failed). The
+radius is `marker_radius` of the goal manager (default 0.25 m). The spheres are real
+meshes, so the drone's depth camera sees them and NavRL treats them as obstacles: it
+steers around the sphere instead of flying into it. Keep the radius small (the goal
+then counts as reached once within `reach_radius`, see below). The same states go out
+as `/goal_manager/markers` (MarkerArray) for Foxglove / RViz.
+
+- Obstacle / reachability filtering needs a static grid. `goal_display.py` exports it
+  by itself once per loaded scene (drone spawned, simulation playing), with x/y
+  bounds from the scene's colliders (drone, goal markers and ground planes left out,
+  cut to +-40 m around the drone) and z 0..5 m, to `~/Volume/NavRL/maps/scene_grid.npz`.
+  `goal_manager.launch.py` uses that file as `map_file` when it exists. Goals are then
+  free cells connected to the drone's start cell. Without a map only NavRL's live
+  map (what the camera has seen) is used. To redo it by hand or with other bounds:
+  `ros2 run isaac_nav grid_export_request --x -20 20 --y -20 20 --z 0 5`.
+- `reach_radius` must stay above 1 m: NavRL stops commanding velocity within 1 m.
+- `use_goal_height` must match navigation_node's parameter (z is checked only then).
+- Regenerate goals: `ros2 topic pub --once /goal_manager/regenerate std_msgs/msg/Empty "{}"`.
+- Tested: goal logic with synthetic odometry and grid (no goal in walls or a sealed
+  room over 300 seeds); display and grid export in headless Isaac Sim with a toy
+  scene. NOT tested inside the Pegasus extension, the Full Warehouse scene or a
+  live drone.
+
+### Global path planning (goal_manager_node, `use_planner`, default on)
+
+With a `map_file` the goal manager plans an A* path on the exported grid (distance
+transform cost keeps it away from the inflated boundary, line-of-sight smoothing)
+and sends NavRL a moving carrot point `lookahead` metres ahead along the path
+(5 Hz on `/goal_pose`) instead of the far goal. The carrot is pulled back to the
+farthest point in line of sight, so it never sits behind a corner. The path is
+published on `/goal_manager/path`. The drone is re-planned from where it is when it
+gets more than `replan_distance` off the path. Reach detection still uses the final
+goal. Without a path (or without `map_file`) it falls back to flying straight to the
+goal. `goal_list:="x,y,z;x,y,z"` replaces the random goals with fixed ones.
+With `use_goal_height:=false` the path stays in the drone's current z layer (NavRL
+ignores the goal height then).
+
+Tested: synthetic wall (detour round the end, sealed goal -> no path, carrot-following
+simulated drone reaches both goals). NOT tested with a live drone. Run tests in their
+own ROS domain (`ROS_DOMAIN_ID=88 ROS_LOCALHOST_ONLY=1`), the node publishes
+/goal_pose and tests publish /drone0/odom, which would disturb a running system.

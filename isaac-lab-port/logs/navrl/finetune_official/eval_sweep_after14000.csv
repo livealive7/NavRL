@@ -1,0 +1,2 @@
+iteration,reached,collision,out_of_bounds,timeout,orig_reach_goal,orig_collision
+15000,0.6367,0.3594,0.0000,0.6406,0.6367,0.3594

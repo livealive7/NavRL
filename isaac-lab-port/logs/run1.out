@@ -1,0 +1,206 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1790749423.089861  481249 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1790749423.089902  481249 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.1.2+production.326809.f9bf0dda.gl
+[ISAACLAB] Kit kernel:  210.1.11+release.13746.80f6dc72.gl
+[ISAACLAB] Kit hash:    f9bf0dda
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5080" (15 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/peterson/.cache/warp/1.16.0
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 0
+	Physics step-size     : 0.016
+	Rendering step-size   : 0.016
+	Environment step-size : 0.016
+[INFO] Generating terrains randomly took Last: 0.083270 s
+[INFO]: Physics scene prim path: /physicsScene
+[INFO]: Time taken for scene creation Last: 1.138119 s, Mean: 1.138119 s, Std: 0.000000 s, N: 1
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1024
+	Environment spacing   : 0.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : ['/World/ground']
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Simulation parameters for joints in /World/envs/env_[^/]+/Robot:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                 Simulation Joint Information (Prim path: /World/envs/env_[^/]+/Robot)                                                  |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name          | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | rotor_0_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   1   | rotor_1_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   2   | rotor_2_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
+|   3   | rotor_3_joint |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |    3.4e+38    |
++-------+---------------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+[INFO]: Thruster actuator: thrusters with model 'Thruster' (thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3'] [[1, 2, 3, 4]]).
+[INFO]: Initialized 1 thruster actuator(s) for multirotor.
+[INFO]: Multirotor initialized with 4 thrusters
+[INFO]: Thruster names: ['rotor_0', 'rotor_1', 'rotor_2', 'rotor_3']
+[INFO]: Thruster force direction: (0.0, 0.0, 1.0)
+[INFO]: Time taken for simulation start Last: 1.503494 s, Mean: 1.503494 s, Std: 0.000000 s, N: 1
+[INFO]: Completed setting up the environment...
+[NavRL] logging to /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/run1
+[NavRL] it     0 | frames     32,768 | fps    7,641 (collect 2.2s) | step-r   3.77 | ep-len     nan | collision nan | reach nan | actor 0.001 critic 0.500 ev 0.00
+[NavRL] it    10 | frames    360,448 | fps  101,940 (collect 0.2s) | step-r   2.52 | ep-len   316.8 | collision 0.00 | reach 0.00 | actor -0.006 critic 0.049 ev 0.85
+[NavRL] it    20 | frames    688,128 | fps  114,088 (collect 0.1s) | step-r   3.66 | ep-len   658.0 | collision 0.00 | reach 0.00 | actor -0.005 critic 0.008 ev 0.97
+[NavRL] it    30 | frames  1,015,808 | fps  119,239 (collect 0.1s) | step-r   1.11 | ep-len     nan | collision nan | reach nan | actor -0.001 critic 0.058 ev 0.68
+[NavRL] it    40 | frames  1,343,488 | fps  106,528 (collect 0.2s) | step-r  -1.48 | ep-len  1163.1 | collision 0.58 | reach 0.00 | actor -0.009 critic 0.087 ev 0.93
+[NavRL] it    50 | frames  1,671,168 | fps   98,656 (collect 0.2s) | step-r   1.62 | ep-len  1482.5 | collision 1.00 | reach 0.00 | actor -0.016 critic 0.026 ev 0.98
+[NavRL] it    60 | frames  1,998,848 | fps  101,280 (collect 0.2s) | step-r   3.81 | ep-len  1797.8 | collision 1.00 | reach 0.00 | actor -0.009 critic 0.003 ev 0.94
+[NavRL] it    70 | frames  2,326,528 | fps   66,000 (collect 0.3s) | step-r   4.12 | ep-len  1205.5 | collision 0.90 | reach 0.00 | actor -0.002 critic 0.003 ev 0.89
+[NavRL] it    80 | frames  2,654,208 | fps   63,137 (collect 0.3s) | step-r   4.19 | ep-len  1654.4 | collision 0.42 | reach 0.00 | actor -0.010 critic 0.001 ev 0.96
+[NavRL] it    90 | frames  2,981,888 | fps   62,047 (collect 0.3s) | step-r   4.11 | ep-len   667.7 | collision 1.00 | reach 0.00 | actor 0.009 critic 0.003 ev 0.91
+[NavRL] it   100 | frames  3,309,568 | fps   64,963 (collect 0.3s) | step-r   4.09 | ep-len   981.0 | collision 1.00 | reach 0.00 | actor -0.001 critic 0.003 ev 0.94
+[NavRL] it   110 | frames  3,637,248 | fps  100,520 (collect 0.2s) | step-r   4.04 | ep-len  1262.0 | collision 0.81 | reach 0.00 | actor -0.008 critic 0.001 ev 0.98
+[NavRL] it   120 | frames  3,964,928 | fps   99,979 (collect 0.2s) | step-r   4.04 | ep-len  1233.2 | collision 0.77 | reach 0.00 | actor -0.004 critic 0.003 ev 0.96
+[NavRL] it   130 | frames  4,292,608 | fps  103,322 (collect 0.2s) | step-r   4.07 | ep-len  1361.7 | collision 0.66 | reach 0.00 | actor -0.010 critic 0.001 ev 0.98
+[NavRL] it   140 | frames  4,620,288 | fps   97,738 (collect 0.2s) | step-r   4.28 | ep-len  1485.1 | collision 0.53 | reach 0.00 | actor -0.012 critic 0.001 ev 0.99
+[NavRL] it   150 | frames  4,947,968 | fps   95,522 (collect 0.2s) | step-r   4.23 | ep-len  1174.4 | collision 0.73 | reach 0.03 | actor -0.013 critic 0.002 ev 0.98
+[NavRL] it   160 | frames  5,275,648 | fps   99,566 (collect 0.2s) | step-r   4.26 | ep-len   986.8 | collision 0.82 | reach 0.11 | actor -0.003 critic 0.007 ev 0.94
+[NavRL] it   170 | frames  5,603,328 | fps  100,970 (collect 0.2s) | step-r   4.29 | ep-len   808.5 | collision 0.85 | reach 0.06 | actor 0.001 critic 0.005 ev 0.95
+[NavRL] it   180 | frames  5,931,008 | fps  105,363 (collect 0.2s) | step-r   4.31 | ep-len  1032.3 | collision 0.72 | reach 0.19 | actor 0.001 critic 0.005 ev 0.94
+[NavRL] it   190 | frames  6,258,688 | fps  100,635 (collect 0.2s) | step-r   4.33 | ep-len  1338.1 | collision 0.55 | reach 0.42 | actor -0.010 critic 0.001 ev 0.99
+[NavRL] it   200 | frames  6,586,368 | fps  104,093 (collect 0.2s) | step-r   4.31 | ep-len  1225.8 | collision 0.62 | reach 0.29 | actor -0.010 critic 0.001 ev 0.99
+[NavRL] it   210 | frames  6,914,048 | fps  101,940 (collect 0.2s) | step-r   4.35 | ep-len  1228.0 | collision 0.68 | reach 0.24 | actor -0.013 critic 0.001 ev 0.99
+[NavRL] it   220 | frames  7,241,728 | fps  100,862 (collect 0.2s) | step-r   4.33 | ep-len  1490.0 | collision 0.48 | reach 0.44 | actor -0.013 critic 0.001 ev 0.99
+[NavRL] it   230 | frames  7,569,408 | fps  100,368 (collect 0.2s) | step-r   4.37 | ep-len  1056.9 | collision 0.66 | reach 0.30 | actor -0.014 critic 0.001 ev 0.99
+[NavRL] it   240 | frames  7,897,088 | fps   86,287 (collect 0.2s) | step-r   4.40 | ep-len  1169.4 | collision 0.63 | reach 0.34 | actor -0.010 critic 0.002 ev 0.99
+[NavRL] it   250 | frames  8,224,768 | fps   97,532 (collect 0.2s) | step-r   4.41 | ep-len  1074.8 | collision 0.67 | reach 0.31 | actor -0.015 critic 0.001 ev 0.99
+[NavRL] it   260 | frames  8,552,448 | fps   62,823 (collect 0.3s) | step-r   4.43 | ep-len  1118.0 | collision 0.66 | reach 0.28 | actor -0.005 critic 0.008 ev 0.95
+[NavRL] it   270 | frames  8,880,128 | fps   61,550 (collect 0.3s) | step-r   4.37 | ep-len  1047.3 | collision 0.65 | reach 0.25 | actor -0.013 critic 0.001 ev 0.99
+[NavRL] it   280 | frames  9,207,808 | fps   61,401 (collect 0.3s) | step-r   4.37 | ep-len  1282.5 | collision 0.56 | reach 0.23 | actor -0.014 critic 0.001 ev 0.99
+[NavRL] it   290 | frames  9,535,488 | fps   61,632 (collect 0.3s) | step-r   4.35 | ep-len   873.3 | collision 0.74 | reach 0.26 | actor -0.005 critic 0.024 ev 0.88
+[NavRL] it   300 | frames  9,863,168 | fps   87,442 (collect 0.2s) | step-r   4.33 | ep-len  1401.2 | collision 0.46 | reach 0.45 | actor -0.009 critic 0.002 ev 0.99
+[NavRL] it   310 | frames 10,190,848 | fps   90,805 (collect 0.2s) | step-r   4.38 | ep-len  1392.8 | collision 0.45 | reach 0.44 | actor -0.003 critic 0.018 ev 0.91
+[NavRL] it   320 | frames 10,518,528 | fps   61,393 (collect 0.3s) | step-r   4.39 | ep-len  1099.1 | collision 0.61 | reach 0.37 | actor -0.006 critic 0.015 ev 0.92
+[NavRL] it   330 | frames 10,846,208 | fps   59,826 (collect 0.3s) | step-r   4.41 | ep-len  1186.7 | collision 0.57 | reach 0.39 | actor -0.017 critic 0.002 ev 0.99
+[NavRL] it   340 | frames 11,173,888 | fps   60,620 (collect 0.4s) | step-r   4.41 | ep-len  1067.0 | collision 0.63 | reach 0.33 | actor -0.013 critic 0.002 ev 0.99
+[NavRL] it   350 | frames 11,501,568 | fps   64,146 (collect 0.3s) | step-r   4.36 | ep-len   831.8 | collision 0.75 | reach 0.21 | actor -0.012 critic 0.001 ev 0.99
+[NavRL] it   360 | frames 11,829,248 | fps  101,530 (collect 0.2s) | step-r   4.37 | ep-len  1411.2 | collision 0.46 | reach 0.47 | actor -0.012 critic 0.001 ev 0.99
+[NavRL] it   370 | frames 12,156,928 | fps  103,379 (collect 0.2s) | step-r   4.39 | ep-len  1376.1 | collision 0.44 | reach 0.56 | actor -0.014 critic 0.001 ev 0.99
+[NavRL] it   380 | frames 12,484,608 | fps  103,496 (collect 0.2s) | step-r   4.37 | ep-len  1535.8 | collision 0.40 | reach 0.41 | actor -0.016 critic 0.002 ev 0.99
+[NavRL] it   390 | frames 12,812,288 | fps  103,521 (collect 0.2s) | step-r   4.38 | ep-len  1053.5 | collision 0.63 | reach 0.33 | actor 0.009 critic 0.014 ev 0.95
+[NavRL] it   400 | frames 13,139,968 | fps   95,767 (collect 0.2s) | step-r   4.40 | ep-len  1383.2 | collision 0.46 | reach 0.49 | actor -0.013 critic 0.001 ev 0.99
+[NavRL] it   410 | frames 13,467,648 | fps   99,635 (collect 0.2s) | step-r   4.40 | ep-len   922.5 | collision 0.70 | reach 0.25 | actor 0.000 critic 0.013 ev 0.96
+[NavRL] it   420 | frames 13,795,328 | fps  103,094 (collect 0.2s) | step-r   4.39 | ep-len  1251.1 | collision 0.54 | reach 0.37 | actor -0.013 critic 0.002 ev 0.99
+[NavRL] it   430 | frames 14,123,008 | fps  100,418 (collect 0.2s) | step-r   4.39 | ep-len  1373.4 | collision 0.48 | reach 0.46 | actor -0.012 critic 0.002 ev 0.99
+[NavRL] it   440 | frames 14,450,688 | fps   97,241 (collect 0.2s) | step-r   4.44 | ep-len  1034.6 | collision 0.66 | reach 0.31 | actor -0.009 critic 0.002 ev 0.99
+[NavRL] it   450 | frames 14,778,368 | fps  101,175 (collect 0.2s) | step-r   4.46 | ep-len  1123.0 | collision 0.59 | reach 0.38 | actor -0.014 critic 0.001 ev 1.00
+[NavRL] it   460 | frames 15,106,048 | fps  105,610 (collect 0.2s) | step-r   4.46 | ep-len  1013.9 | collision 0.64 | reach 0.29 | actor -0.009 critic 0.002 ev 0.99
+[NavRL] it   470 | frames 15,433,728 | fps   83,248 (collect 0.2s) | step-r   4.45 | ep-len  1167.5 | collision 0.60 | reach 0.31 | actor -0.005 critic 0.015 ev 0.96
+[NavRL] it   480 | frames 15,761,408 | fps   96,252 (collect 0.2s) | step-r   4.43 | ep-len   993.5 | collision 0.71 | reach 0.24 | actor -0.010 critic 0.002 ev 0.99
+[NavRL] it   490 | frames 16,089,088 | fps   61,629 (collect 0.3s) | step-r   4.41 | ep-len  1295.1 | collision 0.50 | reach 0.50 | actor -0.011 critic 0.002 ev 0.99
+[NavRL] it   500 | frames 16,416,768 | fps   58,938 (collect 0.4s) | step-r   4.40 | ep-len  1311.6 | collision 0.50 | reach 0.50 | actor -0.006 critic 0.017 ev 0.96
+[NavRL] it   510 | frames 16,744,448 | fps   59,920 (collect 0.4s) | step-r   4.45 | ep-len  1372.7 | collision 0.48 | reach 0.52 | actor -0.011 critic 0.002 ev 0.99
+[NavRL] it   520 | frames 17,072,128 | fps   60,698 (collect 0.3s) | step-r   4.45 | ep-len  1489.3 | collision 0.43 | reach 0.55 | actor -0.002 critic 0.030 ev 0.93
+[NavRL] it   530 | frames 17,399,808 | fps   97,392 (collect 0.2s) | step-r   4.42 | ep-len  1176.9 | collision 0.60 | reach 0.40 | actor -0.004 critic 0.017 ev 0.96
+[NavRL] it   540 | frames 17,727,488 | fps  100,212 (collect 0.2s) | step-r   4.47 | ep-len  1562.4 | collision 0.34 | reach 0.61 | actor -0.012 critic 0.002 ev 0.99
+[NavRL] it   550 | frames 18,055,168 | fps   64,673 (collect 0.3s) | step-r   4.46 | ep-len  1244.1 | collision 0.56 | reach 0.42 | actor -0.014 critic 0.003 ev 0.99
+[NavRL] it   560 | frames 18,382,848 | fps   61,411 (collect 0.3s) | step-r   4.42 | ep-len  1449.1 | collision 0.42 | reach 0.55 | actor -0.014 critic 0.002 ev 0.99
+[NavRL] it   570 | frames 18,710,528 | fps   59,159 (collect 0.4s) | step-r   4.47 | ep-len  1469.6 | collision 0.42 | reach 0.58 | actor -0.008 critic 0.032 ev 0.93
+[NavRL] it   580 | frames 19,038,208 | fps   59,905 (collect 0.4s) | step-r   4.46 | ep-len   942.1 | collision 0.71 | reach 0.29 | actor -0.013 critic 0.003 ev 0.99
+[NavRL] it   590 | frames 19,365,888 | fps  100,467 (collect 0.2s) | step-r   4.46 | ep-len   826.6 | collision 0.71 | reach 0.24 | actor -0.013 critic 0.002 ev 1.00
+[NavRL] it   600 | frames 19,693,568 | fps  103,582 (collect 0.2s) | step-r   4.44 | ep-len  1317.8 | collision 0.49 | reach 0.42 | actor -0.013 critic 0.002 ev 0.99
+[NavRL] it   610 | frames 20,021,248 | fps  102,752 (collect 0.2s) | step-r   4.47 | ep-len  1257.8 | collision 0.58 | reach 0.33 | actor 0.015 critic 0.015 ev 0.97
+[NavRL] it   620 | frames 20,348,928 | fps  102,216 (collect 0.2s) | step-r   4.43 | ep-len  1401.9 | collision 0.46 | reach 0.54 | actor -0.011 critic 0.003 ev 0.99
+[NavRL] it   630 | frames 20,676,608 | fps  102,392 (collect 0.2s) | step-r   4.48 | ep-len  1108.9 | collision 0.62 | reach 0.38 | actor -0.005 critic 0.002 ev 1.00
+[NavRL] it   640 | frames 21,004,288 | fps  105,816 (collect 0.2s) | step-r   4.49 | ep-len  1517.5 | collision 0.41 | reach 0.53 | actor -0.002 critic 0.019 ev 0.96
+[NavRL] it   650 | frames 21,331,968 | fps  101,064 (collect 0.2s) | step-r   4.47 | ep-len  1234.2 | collision 0.53 | reach 0.44 | actor -0.014 critic 0.002 ev 1.00
+[NavRL] it   660 | frames 21,659,648 | fps  105,048 (collect 0.2s) | step-r   4.46 | ep-len  1290.6 | collision 0.49 | reach 0.51 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it   670 | frames 21,987,328 | fps  103,110 (collect 0.2s) | step-r   4.47 | ep-len  1459.1 | collision 0.46 | reach 0.47 | actor -0.007 critic 0.019 ev 0.96
+[NavRL] it   680 | frames 22,315,008 | fps  102,962 (collect 0.2s) | step-r   4.47 | ep-len  1452.6 | collision 0.40 | reach 0.56 | actor -0.003 critic 0.018 ev 0.97
+[NavRL] it   690 | frames 22,642,688 | fps  100,219 (collect 0.2s) | step-r   4.43 | ep-len  1301.8 | collision 0.57 | reach 0.38 | actor -0.008 critic 0.002 ev 1.00
+[NavRL] it   700 | frames 22,970,368 | fps  100,985 (collect 0.2s) | step-r   4.42 | ep-len  1226.7 | collision 0.55 | reach 0.34 | actor -0.005 critic 0.019 ev 0.96
+[NavRL] it   710 | frames 23,298,048 | fps   98,580 (collect 0.2s) | step-r   4.45 | ep-len  1213.4 | collision 0.57 | reach 0.38 | actor -0.000 critic 0.019 ev 0.96
+[NavRL] it   720 | frames 23,625,728 | fps  103,082 (collect 0.2s) | step-r   4.53 | ep-len   977.6 | collision 0.66 | reach 0.23 | actor -0.011 critic 0.002 ev 1.00
+[NavRL] it   730 | frames 23,953,408 | fps   99,446 (collect 0.2s) | step-r   4.51 | ep-len  1158.5 | collision 0.54 | reach 0.44 | actor -0.014 critic 0.002 ev 1.00
+[NavRL] it   740 | frames 24,281,088 | fps   90,054 (collect 0.2s) | step-r   4.52 | ep-len  1326.0 | collision 0.49 | reach 0.50 | actor -0.005 critic 0.033 ev 0.94
+[NavRL] it   750 | frames 24,608,768 | fps   99,328 (collect 0.2s) | step-r   4.50 | ep-len   885.6 | collision 0.68 | reach 0.28 | actor -0.006 critic 0.018 ev 0.97
+[NavRL] it   760 | frames 24,936,448 | fps  107,464 (collect 0.2s) | step-r   4.46 | ep-len  1053.1 | collision 0.64 | reach 0.36 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it   770 | frames 25,264,128 | fps   98,837 (collect 0.2s) | step-r   4.40 | ep-len  1226.6 | collision 0.53 | reach 0.47 | actor -0.012 critic 0.003 ev 0.99
+[NavRL] it   780 | frames 25,591,808 | fps   98,482 (collect 0.2s) | step-r   4.45 | ep-len  1237.0 | collision 0.52 | reach 0.48 | actor -0.011 critic 0.003 ev 0.99
+[NavRL] it   790 | frames 25,919,488 | fps   96,924 (collect 0.2s) | step-r   4.46 | ep-len  1194.9 | collision 0.53 | reach 0.47 | actor 0.010 critic 0.019 ev 0.96
+[NavRL] it   800 | frames 26,247,168 | fps  102,821 (collect 0.2s) | step-r   4.48 | ep-len  1189.5 | collision 0.55 | reach 0.45 | actor -0.006 critic 0.021 ev 0.96
+[NavRL] it   810 | frames 26,574,848 | fps  103,437 (collect 0.2s) | step-r   4.47 | ep-len  1232.6 | collision 0.54 | reach 0.46 | actor -0.008 critic 0.003 ev 0.99
+[NavRL] it   820 | frames 26,902,528 | fps  100,259 (collect 0.2s) | step-r   4.48 | ep-len  1504.7 | collision 0.38 | reach 0.57 | actor -0.007 critic 0.004 ev 0.99
+[NavRL] it   830 | frames 27,230,208 | fps   94,758 (collect 0.2s) | step-r   4.42 | ep-len  1113.0 | collision 0.60 | reach 0.35 | actor -0.007 critic 0.039 ev 0.93
+[NavRL] it   840 | frames 27,557,888 | fps   98,890 (collect 0.2s) | step-r   4.47 | ep-len  1210.9 | collision 0.54 | reach 0.42 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] it   850 | frames 27,885,568 | fps  103,796 (collect 0.2s) | step-r   4.53 | ep-len  1024.5 | collision 0.63 | reach 0.29 | actor -0.002 critic 0.018 ev 0.97
+[NavRL] it   860 | frames 28,213,248 | fps   94,521 (collect 0.2s) | step-r   4.47 | ep-len  1222.6 | collision 0.53 | reach 0.47 | actor -0.007 critic 0.020 ev 0.96
+[NavRL] it   870 | frames 28,540,928 | fps  102,039 (collect 0.2s) | step-r   4.48 | ep-len  1175.9 | collision 0.56 | reach 0.44 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] it   880 | frames 28,868,608 | fps   96,921 (collect 0.2s) | step-r   4.52 | ep-len  1325.1 | collision 0.48 | reach 0.52 | actor -0.011 critic 0.002 ev 1.00
+[NavRL] it   890 | frames 29,196,288 | fps  100,790 (collect 0.2s) | step-r   4.50 | ep-len  1172.0 | collision 0.59 | reach 0.41 | actor -0.011 critic 0.003 ev 0.99
+[NavRL] it   900 | frames 29,523,968 | fps   92,601 (collect 0.2s) | step-r   4.47 | ep-len   914.3 | collision 0.69 | reach 0.31 | actor -0.011 critic 0.003 ev 1.00
+[NavRL] it   910 | frames 29,851,648 | fps   98,305 (collect 0.2s) | step-r   4.45 | ep-len  1507.3 | collision 0.38 | reach 0.59 | actor -0.002 critic 0.015 ev 0.97
+[NavRL] it   920 | frames 30,179,328 | fps  101,543 (collect 0.2s) | step-r   4.53 | ep-len  1151.9 | collision 0.58 | reach 0.42 | actor -0.006 critic 0.018 ev 0.97
+[NavRL] it   930 | frames 30,507,008 | fps  102,615 (collect 0.2s) | step-r   4.49 | ep-len  1052.8 | collision 0.60 | reach 0.40 | actor 0.001 critic 0.020 ev 0.96
+[NavRL] it   940 | frames 30,834,688 | fps   96,885 (collect 0.2s) | step-r   4.48 | ep-len  1075.1 | collision 0.64 | reach 0.36 | actor -0.013 critic 0.002 ev 1.00
+[NavRL] it   950 | frames 31,162,368 | fps  100,535 (collect 0.2s) | step-r   4.48 | ep-len  1125.3 | collision 0.58 | reach 0.43 | actor -0.001 critic 0.019 ev 0.96
+[NavRL] it   960 | frames 31,490,048 | fps   99,954 (collect 0.2s) | step-r   4.45 | ep-len  1397.9 | collision 0.44 | reach 0.56 | actor -0.005 critic 0.017 ev 0.97
+[NavRL] it   970 | frames 31,817,728 | fps  101,320 (collect 0.2s) | step-r   4.48 | ep-len   844.6 | collision 0.75 | reach 0.23 | actor -0.008 critic 0.002 ev 1.00
+[NavRL] it   980 | frames 32,145,408 | fps   95,664 (collect 0.2s) | step-r   4.47 | ep-len   924.7 | collision 0.68 | reach 0.32 | actor -0.007 critic 0.019 ev 0.96
+[NavRL] it   990 | frames 32,473,088 | fps  101,918 (collect 0.2s) | step-r   4.53 | ep-len  1320.0 | collision 0.49 | reach 0.51 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it  1000 | frames 32,800,768 | fps  100,572 (collect 0.2s) | step-r   4.51 | ep-len   802.0 | collision 0.75 | reach 0.25 | actor -0.015 critic 0.002 ev 1.00
+[NavRL] it  1010 | frames 33,128,448 | fps   99,791 (collect 0.2s) | step-r   4.52 | ep-len  1176.5 | collision 0.56 | reach 0.44 | actor -0.002 critic 0.016 ev 0.97
+[NavRL] it  1020 | frames 33,456,128 | fps  102,415 (collect 0.2s) | step-r   4.50 | ep-len   892.8 | collision 0.74 | reach 0.26 | actor -0.005 critic 0.019 ev 0.97
+[NavRL] it  1030 | frames 33,783,808 | fps  102,165 (collect 0.2s) | step-r   4.50 | ep-len   959.9 | collision 0.67 | reach 0.33 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] it  1040 | frames 34,111,488 | fps  101,032 (collect 0.2s) | step-r   4.50 | ep-len  1020.0 | collision 0.63 | reach 0.37 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it  1050 | frames 34,439,168 | fps   96,415 (collect 0.2s) | step-r   4.49 | ep-len  1217.2 | collision 0.52 | reach 0.43 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it  1060 | frames 34,766,848 | fps  100,699 (collect 0.2s) | step-r   4.49 | ep-len  1365.1 | collision 0.45 | reach 0.50 | actor -0.006 critic 0.018 ev 0.97
+[NavRL] it  1070 | frames 35,094,528 | fps  103,231 (collect 0.2s) | step-r   4.50 | ep-len  1144.9 | collision 0.57 | reach 0.43 | actor -0.004 critic 0.017 ev 0.97
+[NavRL] it  1080 | frames 35,422,208 | fps  100,319 (collect 0.2s) | step-r   4.46 | ep-len  1364.1 | collision 0.48 | reach 0.51 | actor -0.012 critic 0.001 ev 1.00
+[NavRL] it  1090 | frames 35,749,888 | fps  101,301 (collect 0.2s) | step-r   4.49 | ep-len   959.9 | collision 0.67 | reach 0.33 | actor -0.001 critic 0.020 ev 0.96
+[NavRL] it  1100 | frames 36,077,568 | fps  103,120 (collect 0.2s) | step-r   4.48 | ep-len  1100.6 | collision 0.57 | reach 0.36 | actor -0.004 critic 0.019 ev 0.97
+[NavRL] it  1110 | frames 36,405,248 | fps  103,713 (collect 0.2s) | step-r   4.48 | ep-len  1565.9 | collision 0.38 | reach 0.56 | actor -0.005 critic 0.035 ev 0.94
+[NavRL] it  1120 | frames 36,732,928 | fps  100,759 (collect 0.2s) | step-r   4.44 | ep-len   907.5 | collision 0.72 | reach 0.25 | actor -0.004 critic 0.021 ev 0.96
+[NavRL] it  1130 | frames 37,060,608 | fps  103,572 (collect 0.2s) | step-r   4.50 | ep-len  1362.0 | collision 0.42 | reach 0.55 | actor -0.005 critic 0.035 ev 0.94
+[NavRL] it  1140 | frames 37,388,288 | fps  105,408 (collect 0.2s) | step-r   4.54 | ep-len  1343.6 | collision 0.45 | reach 0.48 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it  1150 | frames 37,715,968 | fps  106,356 (collect 0.2s) | step-r   4.52 | ep-len  1181.7 | collision 0.54 | reach 0.46 | actor -0.012 critic 0.001 ev 1.00
+[NavRL] it  1160 | frames 38,043,648 | fps  106,383 (collect 0.2s) | step-r   4.52 | ep-len  1437.5 | collision 0.39 | reach 0.61 | actor -0.013 critic 0.002 ev 1.00
+[NavRL] it  1170 | frames 38,371,328 | fps  103,410 (collect 0.2s) | step-r   4.52 | ep-len  1378.4 | collision 0.44 | reach 0.52 | actor -0.013 critic 0.001 ev 1.00
+[NavRL] it  1180 | frames 38,699,008 | fps  102,357 (collect 0.2s) | step-r   4.51 | ep-len  1194.0 | collision 0.56 | reach 0.44 | actor -0.012 critic 0.001 ev 1.00
+[NavRL] it  1190 | frames 39,026,688 | fps  106,620 (collect 0.2s) | step-r   4.54 | ep-len  1326.6 | collision 0.50 | reach 0.50 | actor -0.008 critic 0.037 ev 0.93
+[NavRL] it  1200 | frames 39,354,368 | fps  104,402 (collect 0.2s) | step-r   4.54 | ep-len  1169.0 | collision 0.65 | reach 0.31 | actor -0.008 critic 0.021 ev 0.96
+[NavRL] it  1210 | frames 39,682,048 | fps  103,398 (collect 0.2s) | step-r   4.52 | ep-len  1046.1 | collision 0.66 | reach 0.34 | actor -0.013 critic 0.001 ev 1.00
+[NavRL] it  1220 | frames 40,009,728 | fps  100,518 (collect 0.2s) | step-r   4.53 | ep-len  1304.4 | collision 0.53 | reach 0.47 | actor -0.015 critic 0.001 ev 1.00
+[NavRL] it  1230 | frames 40,337,408 | fps  102,832 (collect 0.2s) | step-r   4.54 | ep-len   962.4 | collision 0.69 | reach 0.31 | actor -0.014 critic 0.001 ev 1.00
+[NavRL] it  1240 | frames 40,665,088 | fps  102,868 (collect 0.2s) | step-r   4.54 | ep-len  1329.8 | collision 0.49 | reach 0.51 | actor -0.014 critic 0.002 ev 1.00
+[NavRL] it  1250 | frames 40,992,768 | fps  101,098 (collect 0.2s) | step-r   4.52 | ep-len  1256.5 | collision 0.53 | reach 0.47 | actor -0.016 critic 0.001 ev 1.00
+[NavRL] it  1260 | frames 41,320,448 | fps  103,780 (collect 0.2s) | step-r   4.49 | ep-len  1206.5 | collision 0.55 | reach 0.45 | actor -0.003 critic 0.021 ev 0.96
+[NavRL] it  1270 | frames 41,648,128 | fps   99,342 (collect 0.2s) | step-r   4.53 | ep-len  1462.4 | collision 0.42 | reach 0.58 | actor -0.013 critic 0.001 ev 1.00
+[NavRL] it  1280 | frames 41,975,808 | fps  105,279 (collect 0.2s) | step-r   4.53 | ep-len  1180.9 | collision 0.56 | reach 0.44 | actor -0.011 critic 0.001 ev 1.00
+[NavRL] it  1290 | frames 42,303,488 | fps  101,347 (collect 0.2s) | step-r   4.49 | ep-len   911.7 | collision 0.73 | reach 0.25 | actor -0.012 critic 0.001 ev 1.00
+[NavRL] it  1300 | frames 42,631,168 | fps   99,005 (collect 0.2s) | step-r   4.52 | ep-len  1040.5 | collision 0.66 | reach 0.34 | actor -0.008 critic 0.021 ev 0.96
+[NavRL] it  1310 | frames 42,958,848 | fps   99,762 (collect 0.2s) | step-r   4.55 | ep-len  1459.8 | collision 0.44 | reach 0.55 | actor -0.016 critic 0.001 ev 1.00
+[NavRL] it  1320 | frames 43,286,528 | fps  103,624 (collect 0.2s) | step-r   4.57 | ep-len  1106.2 | collision 0.62 | reach 0.33 | actor -0.017 critic 0.001 ev 1.00
+[NavRL] it  1330 | frames 43,614,208 | fps   96,302 (collect 0.2s) | step-r   4.53 | ep-len  1068.3 | collision 0.60 | reach 0.40 | actor -0.007 critic 0.002 ev 1.00
+[NavRL] it  1340 | frames 43,941,888 | fps   99,963 (collect 0.2s) | step-r   4.54 | ep-len  1082.9 | collision 0.66 | reach 0.31 | actor -0.001 critic 0.036 ev 0.93
+[NavRL] it  1350 | frames 44,269,568 | fps  101,336 (collect 0.2s) | step-r   4.51 | ep-len  1074.5 | collision 0.66 | reach 0.34 | actor 0.007 critic 0.002 ev 1.00
+[NavRL] it  1360 | frames 44,597,248 | fps  103,422 (collect 0.2s) | step-r   4.50 | ep-len  1422.4 | collision 0.46 | reach 0.54 | actor -0.013 critic 0.002 ev 1.00
+[NavRL] it  1370 | frames 44,924,928 | fps  100,712 (collect 0.2s) | step-r   4.49 | ep-len  1276.8 | collision 0.51 | reach 0.49 | actor -0.008 critic 0.002 ev 1.00
+[NavRL] it  1380 | frames 45,252,608 | fps   97,811 (collect 0.2s) | step-r   4.53 | ep-len  1032.7 | collision 0.61 | reach 0.35 | actor -0.013 critic 0.001 ev 1.00
+[NavRL] it  1390 | frames 45,580,288 | fps  102,375 (collect 0.2s) | step-r   4.53 | ep-len  1257.1 | collision 0.52 | reach 0.43 | actor -0.015 critic 0.002 ev 1.00
+[NavRL] it  1400 | frames 45,907,968 | fps   99,592 (collect 0.2s) | step-r   4.50 | ep-len  1418.0 | collision 0.42 | reach 0.57 | actor -0.013 critic 0.002 ev 1.00
+[NavRL] it  1410 | frames 46,235,648 | fps  105,651 (collect 0.2s) | step-r   4.51 | ep-len  1504.3 | collision 0.38 | reach 0.62 | actor -0.009 critic 0.002 ev 1.00
+[NavRL] it  1420 | frames 46,563,328 | fps   98,234 (collect 0.2s) | step-r   4.48 | ep-len  1216.6 | collision 0.55 | reach 0.45 | actor -0.012 critic 0.002 ev 1.00
+[NavRL] it  1430 | frames 46,891,008 | fps  101,840 (collect 0.2s) | step-r   4.48 | ep-len  1436.8 | collision 0.42 | reach 0.50 | actor -0.012 critic 0.001 ev 1.00
+[NavRL] it  1440 | frames 47,218,688 | fps  101,909 (collect 0.2s) | step-r   4.49 | ep-len  1095.2 | collision 0.67 | reach 0.33 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] it  1450 | frames 47,546,368 | fps  101,070 (collect 0.2s) | step-r   4.55 | ep-len  1045.0 | collision 0.62 | reach 0.38 | actor 0.002 critic 0.016 ev 0.97
+[NavRL] it  1460 | frames 47,874,048 | fps  102,463 (collect 0.2s) | step-r   4.59 | ep-len   590.3 | collision 0.84 | reach 0.16 | actor -0.005 critic 0.035 ev 0.94
+[NavRL] it  1470 | frames 48,201,728 | fps  100,043 (collect 0.2s) | step-r   4.55 | ep-len  1466.1 | collision 0.41 | reach 0.54 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] it  1480 | frames 48,529,408 | fps  100,071 (collect 0.2s) | step-r   4.49 | ep-len  1007.9 | collision 0.69 | reach 0.31 | actor -0.014 critic 0.001 ev 1.00
+[NavRL] it  1490 | frames 48,857,088 | fps  101,742 (collect 0.2s) | step-r   4.52 | ep-len  1384.4 | collision 0.47 | reach 0.53 | actor -0.009 critic 0.002 ev 1.00
+[NavRL] it  1500 | frames 49,184,768 | fps  103,103 (collect 0.2s) | step-r   4.57 | ep-len  1217.8 | collision 0.56 | reach 0.38 | actor -0.010 critic 0.002 ev 1.00
+[NavRL] done. 49,184,768 frames in 8.9 min -> /home/peterson/Volume/NavRL/isaac-lab-port/logs/navrl/run1
+[INFO]: SimulationContext cleared
+Loading user config located at: '/home/peterson/Volume/IsaacLab/.venv/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+2026-09-30T06:23:43Z [0ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-09-30T06:23:43Z [2ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-09-30T06:23:46Z [3,202ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
