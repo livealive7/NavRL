@@ -67,6 +67,8 @@ class CmdVelPx4Bridge(Node):
         self.declare_parameter('cmd_vel_topic', 'cmd_vel')
         self.declare_parameter('setpoint_rate_hz', 20.0)
         self.declare_parameter('cmd_timeout_s', 0.5)
+        # PX4 may still be building / booting when the bridge starts (navrl_stack.launch.py).
+        self.declare_parameter('heartbeat_timeout_s', 300.0)
         self.declare_parameter('frame', 'BODY_NED')
         # Automatically arm and switch to OFFBOARD. Intended for simulation;
         # set to False on real hardware and do it from the RC / GCS instead.
@@ -83,6 +85,7 @@ class CmdVelPx4Bridge(Node):
         cmd_vel_topic = self.get_parameter('cmd_vel_topic').value
         rate_hz = float(self.get_parameter('setpoint_rate_hz').value)
         self.cmd_timeout = float(self.get_parameter('cmd_timeout_s').value)
+        self.heartbeat_timeout = float(self.get_parameter('heartbeat_timeout_s').value)
         frame_name = self.get_parameter('frame').value
         self.auto_arm_offboard = bool(
             self.get_parameter('auto_arm_offboard').value)
@@ -103,7 +106,7 @@ class CmdVelPx4Bridge(Node):
         # registration heartbeat is needed. Only accept the autopilot
         # component, since other components can also heartbeat on this port.
         hb = None
-        deadline = time.monotonic() + 30.0
+        deadline = time.monotonic() + self.heartbeat_timeout
         while time.monotonic() < deadline:
             msg = self.master.recv_match(
                 type='HEARTBEAT', blocking=True, timeout=1)
@@ -116,7 +119,8 @@ class CmdVelPx4Bridge(Node):
                 break
         if hb is None:
             raise RuntimeError(
-                f'No autopilot heartbeat on {connection_string} within 30 s')
+                f'No autopilot heartbeat on {connection_string} within '
+                f'{self.heartbeat_timeout:.0f} s')
 
         # recv_match() does not populate target ids, set them explicitly.
         self.master.target_system = hb.get_srcSystem()

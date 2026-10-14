@@ -246,6 +246,8 @@ def launch_setup(context, *args, **kwargs):
                      'use_goal_height': arg('use_goal_height').lower() == 'true',
                      'goal_stop_distance': float(arg('goal_stop_distance')),
                      'lidar_column_min': arg('lidar_column_min').lower() == 'true',
+                     'goal_ignore_radius': float(arg('goal_ignore_radius')),
+                     'goal_clip_behind': float(arg('goal_clip_behind')),
                      'goal_min_height': float(arg('min_height')),
                      'goal_max_height': float(arg('max_height')),
                      'checkpoint_file': arg('checkpoint_file'),
@@ -287,6 +289,16 @@ def generate_launch_description():
             description='A lidar direction is free only if all its vertical beams are '
                         'free (stops the policy entering narrow rack bays). '
                         'false = original NavRL behaviour.'),
+        DeclareLaunchArgument(
+            'goal_clip_behind', default_value='-1.0',
+            description='>= 0: ignore lidar hits that lie more than this many metres beyond a '
+                        'goal_manager goal (within 30 deg of the goal direction); obstacles '
+                        'behind the goal otherwise make the policy hold back. -1 = off.'),
+        DeclareLaunchArgument(
+            'goal_ignore_radius', default_value='0.0',
+            description='Ignore lidar hits within this radius (m) of the goal_manager '
+                        'goal markers (they are meshes the depth camera maps as '
+                        'obstacles). 0 = off. Start with 0.3.'),
         DeclareLaunchArgument(
             'goal_stop_distance', default_value='0.5',
             description='Stop commanding velocity this close to the goal (m). '

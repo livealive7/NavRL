@@ -2,7 +2,8 @@
 from rclpy.node import Node
 from rclpy.callback_groups import MutuallyExclusiveCallbackGroup
 from nav_msgs.msg import Odometry
-from geometry_msgs.msg import Twist, PoseStamped, Quaternion, Point, Vector3
+from geometry_msgs.msg import Twist, PoseStamped, PoseArray, Quaternion, Point, Vector3
+from rclpy.qos import QoSProfile, DurabilityPolicy, ReliabilityPolicy
 from visualization_msgs.msg import Marker, MarkerArray
 from std_msgs.msg import Bool
 from builtin_interfaces.msg import Duration
@@ -58,6 +59,23 @@ class Navigation(Node):
         # Treat each lidar direction as blocked if any of its vertical beams hit something.
         self.declare_parameter('lidar_column_min', True)
         self.lidar_column_min = self.get_parameter('lidar_column_min').get_parameter_value().bool_value
+        # Goal markers drawn in the simulator are real meshes, so the depth camera maps
+        # them as obstacles. Lidar hits within this radius of a marker (positions come
+        # from goal_manager on goal_points_topic) are treated as "nothing hit".
+        # 0 = off (upstream behaviour).
+        self.declare_parameter('goal_ignore_radius', 0.0)
+        self.declare_parameter('goal_points_topic', '/goal_manager/goal_points')
+        self.goal_ignore_radius = self.get_parameter('goal_ignore_radius').get_parameter_value().double_value
+        self.goal_points = []
+        # Obstacles farther than the goal do not matter for reaching it, but a rack just
+        # behind the goal makes the policy hold back. With goal_clip_behind >= 0, lidar hits
+        # within goal_clip_angle degrees of the goal direction that lie more than this many
+        # metres beyond the goal are treated as "nothing hit". Only applied while /goal_pose
+        # is a real goal (a goal_manager marker), never to a carrot. -1 = off.
+        self.declare_parameter('goal_clip_behind', -1.0)
+        self.declare_parameter('goal_clip_angle', 30.0)
+        self.goal_clip_behind = self.get_parameter('goal_clip_behind').get_parameter_value().double_value
+        self.goal_clip_angle = self.get_parameter('goal_clip_angle').get_parameter_value().double_value
         self.declare_parameter('use_goal_height', False)
         self.declare_parameter('goal_min_height', 0.5)
         self.declare_parameter('goal_max_height', 5.0)
@@ -76,6 +94,12 @@ class Navigation(Node):
         self.get_logger().info(f"[navRunner]: Odom topic name: {odom_topic}.")
         self.odom_sub = self.create_subscription(Odometry, odom_topic, self.odom_callback, 10) # odom
         self.goal_sub = self.create_subscription(PoseStamped, '/goal_pose', self.goal_callback, 10) # goal
+        if self.goal_ignore_radius > 0.0 or self.goal_clip_behind >= 0.0:
+            self.goal_points_sub = self.create_subscription(
+                PoseArray, self.get_parameter('goal_points_topic').get_parameter_value().string_value,
+                self.goal_points_callback,
+                QoSProfile(depth=1, reliability=ReliabilityPolicy.RELIABLE,
+                           durability=DurabilityPolicy.TRANSIENT_LOCAL))
         self.emergency_stop_sub = self.create_subscription(Bool, '/navigation_emergency_stop', self.safety_check_callback, 10) # safety check
         
         # Publisher
@@ -135,6 +159,9 @@ class Navigation(Node):
             self.safety_stop = True
         else:
             self.safety_stop = False
+
+    def goal_points_callback(self, msg):
+        self.goal_points = [[p.position.x, p.position.y, p.position.z] for p in msg.poses]
 
     def odom_callback(self, odom):
         self.odom = odom
@@ -323,7 +350,22 @@ class Navigation(Node):
 
         # Lidar States
         lidar_scan = torch.tensor(self.raypoints, device=self.cfg.device)
-        lidar_scan = (lidar_scan - pos).norm(dim=-1).clamp_max(self.cfg.sensor.lidar_range).reshape(1, 1, self.lidar_hbeams, self.cfg.sensor.lidar_vbeams)
+        if self.goal_ignore_radius > 0.0 and len(self.goal_points) > 0:
+            # Drop hits on the goal markers: treat those beams as free (max range).
+            marks = torch.tensor(self.goal_points, device=self.cfg.device, dtype=lidar_scan.dtype)
+            near = (lidar_scan.unsqueeze(1) - marks.unsqueeze(0)).norm(dim=-1).min(dim=1).values < self.goal_ignore_radius
+            far_point = pos + (lidar_scan - pos) / (lidar_scan - pos).norm(dim=-1, keepdim=True).clamp(1e-6) * self.cfg.sensor.lidar_range
+            lidar_scan = torch.where(near.unsqueeze(-1), far_point, lidar_scan)
+        lidar_dist = (lidar_scan - pos).norm(dim=-1)
+        if self.goal_clip_behind >= 0.0 and len(self.goal_points) > 0:
+            marks = torch.tensor(self.goal_points, device=self.cfg.device, dtype=lidar_dist.dtype)
+            if (marks - goal).norm(dim=-1).min() < 0.3:  # the target really is a goal, not a carrot
+                goal_dist = (goal - pos).norm()
+                column = torch.arange(lidar_dist.shape[0], device=self.cfg.device) // self.cfg.sensor.lidar_vbeams
+                off_axis = torch.minimum(column, self.lidar_hbeams - column).to(lidar_dist.dtype) * self.cfg.sensor.lidar_hres
+                behind = (off_axis <= self.goal_clip_angle) & (lidar_dist > goal_dist + self.goal_clip_behind)
+                lidar_dist = torch.where(behind, torch.full_like(lidar_dist, self.cfg.sensor.lidar_range), lidar_dist)
+        lidar_scan = lidar_dist.clamp_max(self.cfg.sensor.lidar_range).reshape(1, 1, self.lidar_hbeams, self.cfg.sensor.lidar_vbeams)
         lidar_scan = self.cfg.sensor.lidar_range - lidar_scan
         if self.lidar_column_min:
             # A direction counts as free only if ALL vertical beams passed: the closest
