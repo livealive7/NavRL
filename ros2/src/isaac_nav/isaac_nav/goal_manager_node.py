@@ -150,6 +150,7 @@ class GoalManager(Node):
         # Points of the live map closer than this to a goal marker are dropped (the marker sphere
         # is seen by the depth camera). Same name and meaning as navigation_node's parameter.
         p('goal_ignore_radius', 0.0)
+        p('status_interval_s', 2.0)    # log goal, distance and flight speed this often (0 = off)
         p('live_dump_dir', '')          # debug: save the grid, drone and path here after every replan
         p('lookahead', 3.0)        # carrot distance ahead of the drone along the path (m)
         p('replan_distance', 1.5)  # replan when the drone is this far off the path (m)
@@ -197,6 +198,8 @@ class GoalManager(Node):
         self.goal_ignore_radius = float(g('goal_ignore_radius'))
         self.live_dump_dir = str(g('live_dump_dir'))
         self.live_dumps = 0
+        self.status_interval = float(g('status_interval_s'))
+        self.last_status = -1e9
         self.replan_distance = float(g('replan_distance'))
         self.use_detour = bool(g('use_detour'))
         if self.use_detour and self.use_planner:
@@ -776,6 +779,15 @@ class GoalManager(Node):
         if not self.use_goal_height:
             delta[2] = 0.0  # NavRL flies at its own height, ignore z
         dist = float(np.linalg.norm(delta))
+
+        if self.status_interval > 0.0 and now - self.last_status >= self.status_interval:
+            self.last_status = now
+            v = self.odom.twist.twist.linear   # body frame; the norm is the flight speed
+            speed = math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z)
+            d = self.drone_pos()
+            self.get_logger().info(
+                f'[status] goal {self.current + 1}/{len(self.goals)} dist {dist:.2f} m  '
+                f'speed {speed:.2f} m/s  pos ({d[0]:.1f}, {d[1]:.1f}, {d[2]:.1f})')
 
         if dist <= self.reach_radius:
             if self.inside_since is None:

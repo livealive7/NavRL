@@ -41,6 +41,7 @@ ARGS = {
     'live_inflate': ('0.6', float),
     'live_replan_s': ('1.0', float),
     'goal_ignore_radius': ('0.0', float),
+    'status_interval_s': ('2.0', float),
     'live_dump_dir': ('', str),
     'use_detour': ('false', bool),
     'stuck_window_s': ('8.0', float),
